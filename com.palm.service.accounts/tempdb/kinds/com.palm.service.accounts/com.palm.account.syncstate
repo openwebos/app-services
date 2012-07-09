@@ -1,0 +1,18 @@
+{
+	"id": "com.palm.account.syncstate:1",
+	"sync": false,
+	"indexes": [
+		{
+			"name": "basic",
+			"props": [{ "name": "accountId" }, { "name": "capabilityProvider" }]
+		},
+		{
+			"name": "withcollection",
+			"props": [{ "name": "accountId" }, { "name": "capabilityProvider" }, { "name": "collectionId" }]
+		},
+		{
+			"name": "accountAndCollection",
+			"props": [{ "name": "accountId" }, { "name": "collectionId", "default": null}]
+		}
+	]
+}

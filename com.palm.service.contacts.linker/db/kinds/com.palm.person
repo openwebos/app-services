@@ -1,0 +1,838 @@
+{
+	"id": "com.palm.person:1",
+	"owner": "com.palm.service.contacts.linker",
+	"schema": {
+		"type": "object",
+		"properties": {
+			"launcherId": {
+				"type": "string",
+				"optional": true,
+				"description": "The launcherId of this contact. This id is the launchPoint id for this persons launch point on the launcher."
+			},
+			"favorite": {
+				"type": "boolean",
+				"description": "Indicates if this person is a favorite"
+			},
+			"contactIds": {
+				"type": "array",
+				"description": "The MojoDB IDs of the contacts that make up this person",
+				"items": {
+					"type": "string"
+				}
+			},
+			"sortKey": {
+				"type": "string",
+				"description": "The UI displays records sorted by this field"
+			},
+			"name": {
+				"type": "object",
+				"optional": true,
+				"description": "The broken-out components and fully formatted version of the contacts real name.",
+				"properties": {
+					"familyName": {
+						"type": "string",
+						"optional": true,
+						"description": "The family name of this Contact, or Last Name in most Western languages."
+					},
+					"givenName": {
+						"type": "string",
+						"optional": true,
+						"description": "The given name of this Contact, or First Name in most Western languages."
+					},
+					"middleName": {
+						"type": "string",
+						"optional": true,
+						"description": "The middle names of this Contact."
+					},
+					"honorificPrefix": {
+						"type": "string",
+						"optional": true,
+						"description": "The honorific prefixes of this Contact, or Title in most Western languages."
+					},
+					"honorificSuffix": {
+						"type": "string",
+						"optional": true,
+						"description": "The honorific suffixes of this Contact, or Suffix in most Western languages."
+					}
+				}
+			},
+			"names": {
+				"type": "array",
+				"optional": true,
+				"description": "The names for all of the contacts linked to this person. Names contain normalized values.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"familyName": {
+							"type": "string",
+							"optional": true,
+							"description": "The family name of this Contact, or Last Name in most Western languages."
+						},
+						"givenName": {
+							"type": "string",
+							"optional": true,
+							"description": "The given name of this Contact, or First Name in most Western languages."
+						},
+						"middleName": {
+							"type": "string",
+							"optional": true,
+							"description": "The middle names of this Contact."
+						},
+						"honorificPrefix": {
+							"type": "string",
+							"optional": true,
+							"description": "The honorific prefixes of this Contact, or Title in most Western languages."
+						},
+						"honorificSuffix": {
+							"type": "string",
+							"optional": true,
+							"description": "The honorifix suffixes of this Contact, or Suffix in most Western languages."
+						},
+						"normalizedFamilyName": {
+							"type": "string",
+							"optional": true,
+							"description": "The normalized family name of this Contact, or Last Name in most Western languages."
+						},
+						"normalizedGivenName": {
+							"type": "string",
+	 						"optional": true,
+							"description": "The normalized given name of this Contact, or First Name in most Western languages."
+						},
+						"normalizedMiddleName": {
+							"type": "string",
+			 				"optional": true,
+							"description": "The normalized middle names of this Contact."
+						},
+						"normalizedHonorificPrefix": {
+							"type": "string",
+							"optional": true,
+							"description": "The normalized honorific prefixes of this Contact, or Title in most Western languages."
+						},
+						"normalizedHonorificSuffix": {
+							"type": "string",
+		 					"optional": true,
+				 			"description": "The normalized honorifix suffixes of this Contact, or Suffix in most Western languages."
+						}
+					}
+				}
+			},
+			"nickname": {
+				"type": "string",
+				"optional": true,
+				"description": "The casual way to address this Contact in real life."
+			},
+			"organization": {
+				"type": "object",
+				"optional": true,
+				"description": "A current organizational affiliation of this Person.",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "The name of the organization."
+					},
+					"department": {
+						"type": "string",
+						"optional": true,
+						"description": "The department within this organization."
+					},
+					"title": {
+						"type": "string",
+						"optional": true,
+						"description": "The job title or role within this organization."
+					},
+					"type": {
+						"type": "string",
+						"optional": true,
+						"description": "The type of organization, with Canonical Values job and school."
+					},
+					"startDate": {
+						"type": "string",
+						"optional": true,
+						"format": "date",
+						"description": "The date this Contact joined this organization."
+					},
+					"endDate": {
+						"type": "string",
+						"optional": true,
+						"format": "date",
+						"description": "The date this Contact left this organization."
+					},
+					"location": {
+						"type": "object",
+						"optional": true,
+						"description": "The physical location of this organization.",
+						"properties": {
+							"streetAddress": {
+								"type": "string",
+								"optional": true,
+								"format": "street-address",
+								"description": "The full street address component, which may include house number, street name, PO BOX, and multi-line extended street address information."
+							},
+							"locality": {
+								"type": "string",
+								"optional": true,
+								"format": "locality",
+								"description": "The city or locality component."
+							},
+							"region": {
+								"type": "string",
+								"optional": true,
+								"format": "region",
+								"description": "The state or region component."
+							},
+							"postalCode": {
+								"type": "string",
+								"optional": true,
+								"format": "postal-code",
+								"description": "The zipcode or postal code component."
+							},
+							"country": {
+								"type": "string",
+								"optional": true,
+								"format": "country",
+								"description": "The country name component."
+							},
+							"type": {
+								"type": "string",
+								"optional": true,
+								"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+							},
+							"primary": {
+								"type": "boolean",
+								"optional": true,
+								"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+							}
+						}
+					},
+					"description": {
+						"type": "string",
+						"optional": true,
+						"description": "A textual description of the role this Contact played in this organization."
+					},
+					"primary": {
+						"type": "boolean",
+						"optional": true,
+						"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+					}
+				}
+			},
+			"relevance": {
+				"type": "object",
+				"optional": true,
+				"description": "Person relevance values",
+				"default": {
+					"type" : "object",
+					"properties" : {
+						"weight": 0,
+						"lastDecrementedTimestamp": 0,
+						"lastEventTimestamp": 0
+					}
+				},
+				"properties": {
+					"calls": {
+						"type": "object",
+	                	"optional": true,
+	                	"description": "Phone calls relevance data",
+						"properties": {
+							"weight": {
+								"type": "integer",
+								"optional": true							
+							},
+							"timestamp": {
+								"type": "integer",
+								"optional": true
+							},
+							"numberInLastDay": {
+								"type": "integer",
+								"optional": true
+							}
+						}
+            		},
+					"emails": {
+		            	"type": "object",
+		                "optional": true,
+		                "description": "Emails relevance data",
+						"properties": {
+							"weight": {
+								"type": "integer",
+								"optional": true
+							},
+							"timestamp": {
+								"type": "integer",
+								"optional": true
+							},
+							"numberInLastDay": {
+								"type": "integer",
+								"optional": true
+							}
+						}
+		            },
+					"messages": {
+		                "type": "object",
+		                "optional": true,
+		                "description": "Texts and chat messages relevance data",
+						"properties": {
+							"weight": {
+								"type": "integer",
+								"optional": true
+							},
+							"timestamp": {
+								"type": "integer",
+								"optional": true
+							},
+							"numberInLastDay": {
+								"type": "integer",
+								"optional": true
+							}
+						}
+		            },
+					"calendar": {
+		                "type": "object",
+		                "optional": true,
+		                "description": "Calendar invites",
+						"properties": {
+							"weight": {
+								"type": "integer",
+								"optional": true
+							},
+							"timestamp": {
+								"type": "integer",
+								"optional": true
+							},
+							"numberInLastDay": {
+								"type": "integer",
+								"optional": true
+							}
+						}
+		            },
+					"lastDecrementedTimestamp": {
+		                "type": "integer",
+		                "optional": true
+		            },
+					"lastEventTimestamp": {
+		                "type": "integer",
+		                "optional": true
+		            },
+					"weight": {
+                		"type": "integer",
+                		"optional": true
+              		}
+				}
+			},
+			"searchTerms": {
+				"type": "array",
+				"description": "A few search terms for the Contacts linked to this Person that are not simply items in other properties. Normalized by lowercasing.  E.g. for Joe Tester: [jtester, testerjoe]",
+				"items": {
+					"type": "string"
+				}
+			},
+			"emails": {
+				"type": "array",
+				"optional": true,
+				"description": "De-duped E-mail addresses for all Contacts linked to this Person, normalized by lowercasing.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"normalizedValue": {
+							"type": "string",
+							"description": "A normalized version of the value property of this field.  Used for indexes/searches."
+						},
+						"favoriteData": {
+							"type": "object",
+							"description": "Keys are the appIds and the values are objects holding listIndex, auxData"
+						},
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				}
+			},
+			"phoneNumbers": {
+				"type": "array",
+				"optional": true,
+				"description": "De-duped Phone numbers for all Contacts linked to this Person, normalized by stripping and reversing, to allow matching on trailing digits using the prefix operator.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"normalizedValue": {
+							"type": "string",
+							"description": "A normalized version of the value property of this field.  Used for indexes/searches."
+						},
+						"favoriteData": {
+							"type": "object",
+							"description": "Keys are the appIds and the values are objects holding listIndex, auxData"
+						},
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				}
+			},
+			"ims": {
+				"type": "array",
+				"optional": true,
+				"description": "De-duped Instant messaging address for all Contacts linked to this Person, normalized by lowercasing.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"normalizedValue": {
+							"type": "string",
+							"description": "A normalized version of the value property of this field.  Used for indexes/searches."
+						},
+						"favoriteData": {
+							"type": "object",
+							"description": "Keys are the appIds and the values are objects holding listIndex, auxData"
+						},
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						},
+						"label": {
+							"type": "string",
+							"optional": true,
+							"description": "The label of field for this instance, usually used to label the preferred function of the given contact information."
+						}
+					}
+				}
+			},
+			"photos": {
+				"type": "object",
+				"description": "The fields representing the photo for this person.",
+				"properties": {
+					"localPathBig": {
+						"type": "string",
+						"optional": true,
+						"description": "The local path of the type_big photo for this person e.g. /some/path/to/photo.png, if one exists.  This is typically in the filecache.  At least one of localPathBig and localPathSquare must be populated if there is a photo for this person."
+					},
+					"localPathSquare": {
+						"type": "string",
+						"optional": true,
+						"description": "The local path of the type_square photo for this person e.g. /some/path/to/photo.png, if one exists.  This is typically in the filecache.  At least one of localPathBig and localPathSquare must be populated if there is a photo for this person."
+					},
+					"localPathList": {
+						"type": "string",
+						"optional": true,
+						"description": "The local path of the photo for this person that is to be used in the contacts app list view e.g. /some/path/to/photo.png.  This is typically in the filecache.  This is a cropped/scaled version of either localPathBig or localPathSquare."
+					},
+					"listPhotoSource": {
+						"type": "string",
+						"optional": true,
+						"description": "type_big or type_square, depending on which one the list photo was cropped/scaled from."
+					},
+					"photoIdBig": {
+						"type": "string",
+						"optional": true,
+						"description": "The DB8 id of the photo subobject that the localPathBig came from."
+					},
+					"photoIdSquare": {
+						"type": "string",
+						"optional": true,
+						"description": "The DB8 id of the photo subobject that the localPathBig came from."
+					},
+					"contactId": {
+						"type": "string",
+						"optional": true,
+						"description": "The DB8 id of the contact from which these photos came."
+					},
+					"accountId": {
+						"type": "string",
+						"optional": true,
+						"description": "The DB8 id of the account which the contact referenced by contactId is a part of."
+					}
+				}
+			},
+			"addresses": {
+				"type": "array",
+				"optional": true,
+				"description": "De-duped addresses for all Contacts link to this person. Normalized by lowercasing.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"streetAddress": {
+							"type": "string",
+							"optional": true,
+							"format": "street-address",
+							"description": "The full street address component, which may include house number, street name, PO BOX, and multi-line extended street address information."
+						},
+						"locality": {
+								"type": "string",
+								"optional": true,
+								"format": "locality",
+								"description": "The city or locality component."
+						},
+						"region": {
+								"type": "string",
+								"optional": true,
+								"format": "region",
+								"description": "The state or region component."
+						},
+						"postalCode": {
+								"type": "string",
+								"optional": true,
+								"format": "postal-code",
+								"description": "The zipcode or postal code component."
+						},
+						"country": {
+								"type": "string",
+								"optional": true,
+								"format": "country",
+								"description": "The country name component."
+						},
+						"type": {
+								"type": "string",
+								"optional": true,
+								"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+								"type": "boolean",
+								"optional": true,
+								"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						},
+						"normalizedStreetAddress": {
+							"type": "string",
+							"optional": true,
+							"format": "street-address",
+							"description": "The normalized full street address component, which may include house number, street name, PO BOX, and multi-line extended street address information. Normalized by lowercasing."
+						},
+						"normalizedLocality": {
+							"type": "string",
+							"optional": true,
+							"format": "locality",
+							"description": "The normalized city or locality component. Normalized by lowercasing."
+						},
+						"normalizedRegion": {
+							"type": "string",
+							"optional": true,
+							"format": "region",
+							"description": "The normalized state or region component. Normalized by lowercasing."
+						},
+						"normalizedPostalCode": {
+							"type": "string",
+							"optional": true,
+							"format": "postal-code",
+							"description": "The normalized zipcode or postal code component."
+						},
+						"normalizedCountry": {
+							"type": "string",
+							"optional": true,
+							"format": "country",
+							"description": "The normalized country name component. Normalized by lowercasing."
+						},
+						"favoriteData": {
+							"type": "object",
+							"optional": true,
+							"description": "Keys are the appIds and the values are objects holding listIndex, auxData"
+						}
+					}
+				}
+			},
+			"urls": {
+				"type": "array",
+				"optional": true,
+				"description": "De-duped urls for all contacts linked to this person. Normalized by lowercasing.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"favoriteData": {
+							"type": "object",
+							"optional": "true",
+							"description": "Keys are the appIds and the values are objects holding listIndex, auxData"
+						},
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				}
+			},
+			"notes": {
+				"type": "array",
+				"optional": true,
+				"description": "The notes for all contacts linked to this person.",
+				"items": {
+					"type": "string"
+				}
+			},
+			"birthday": {
+				"type": "string",
+				"format": "date",
+				"optional": true,
+				"description": "The birthday of this person, in the format yyyy-mm-dd using 0000 when the year is unknown."
+			},
+			"anniversary": {
+				"type": "string",
+				"format": "date",
+				"optional": true,
+				"description": "The wedding anniversary of this person, in the format yyyy-mm-dd using 0000 when the year is unknown."
+			},
+			"gender": {
+				"type": "string",
+				"optional": true,
+				"description": "The gender of this person.",
+				"enum": ["male","female","undisclosed", ""]
+			},
+			"relations": {
+				"type": "array",
+				"optional": true,
+				"description": "De-duped relations for all Contacts link to this person.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				}
+			},
+			"reminder": {
+				"type": "string",
+				"optional": true,
+				"description": "The reminder text for this person."
+			},
+			"ringtone": {
+				"type": "object",
+				"optional": true,
+				"description": "The ringtone that is associated with this person",
+				"properties": {
+					"name": {
+						"type": "string",
+						"optional": true,
+						"description": "The displayable name of the ringtone."
+					},
+					"location": {
+						"type": "string",
+						"optional": true,
+						"description": "The location on the filesystem where this ringtone is located."
+					}
+				}
+			}
+		}
+	},
+	"indexes": [
+		{
+			"name": "rev",
+			"props": [{
+				"name": "_rev"
+			}]
+		}, {
+			"name": "org_name_title",
+			"props": [{
+				"name": "organization.name",
+				"collate":"primary"
+			}, {
+				"name": "organization.title",
+				"collate":"primary"
+			}]
+		}, {
+			"name": "sortKey",
+			"props": [{
+				"name": "sortKey",
+				"collate": "secondary"
+			}]
+		}, {
+			"name": "contactIds",
+			"props": [{
+				"name": "contactIds"
+			}]
+		}, {
+			"name": "names",
+			"props": [{
+				"name": "names"
+			}]
+		}, {
+			"name": "familyName_givenName_middleName",
+			"props": [{
+				"name": "names.familyName",
+				"collate":"primary"
+			}, {
+				"name": "names.givenName",
+				"collate":"primary",
+				"default": ""
+			}, {
+				"name": "names.middleName",
+				"collate": "primary",
+				"default": ""
+			}]
+		}, {
+			"name": "emailValue",
+			"props": [{
+				"name": "emails.value"
+			}]
+		}, {
+			"name": "emailNValue",
+			"props": [{
+				"name": "emails.normalizedValue"
+			}]
+		}, {
+			"name": "phoneValue",
+			"props": [{
+				"name": "phoneNumbers.value"
+			}]
+		}, {
+			"name": "phoneSpeedDial",
+			"props": [{
+				"name": "phoneNumbers.speedDial"
+			}]
+		}, {
+			"name": "imValue",
+			"props": [{
+				"name": "ims.value"
+			}]
+		}, {
+			"name": "nImValue_type",
+			"props": [{
+				"name": "ims.normalizedValue"
+			}, {
+				"name": "ims.type"
+			}]
+		}, {
+			"name": "displayName",
+			"props": [{
+				"name": "displayName"
+			}]
+		}, {
+			"name": "phoneNValue",
+			"props": [{
+				"name": "phoneNumbers.normalizedValue"
+			}]
+		}, {
+			"name": "addresses",
+			"props": [{
+				"name": "addresses"
+			}]
+		}, {
+			"name":"addresses_streetAddress",
+			"props": [{
+				"name":"addresses.streetAddress"
+			}]
+		}, {
+			"name": "favorite_sortKey",
+			"props": [{
+				"name": "favorite"
+			}, {
+				"name": "sortKey",
+				"collate": "secondary"
+			}]
+		}, {
+			"name": "emailRelevance",
+			"props": [{
+				"name": "relevance.emails.weight",
+				"default": 0
+			}]
+		}, {
+			"name": "textRelevance",
+			"props": [{
+				"name": "relevance.messages.weight",
+				"default": 0
+			}]
+		}, {
+			"name": "phoneRelevance",
+			"props": [{
+				"name": "relevance.calls.weight",
+				"default": 0
+			}]
+		}, {
+			"name": "overallRelevance",
+			"props": [{
+				"name": "relevance.weight",
+				"default": 0
+			}]
+		}, {
+			"name": "favorite_searchProperty_sortKey",
+			"props": [{
+				"name": "favorite"
+			}, {
+				"name": "searchProperty",
+				"type": "multi",
+				"collate": "primary",
+				"include": [{
+					"name": "names.honorificPrefix",
+					"tokenize": "all"
+				}, {
+					"name": "names.givenName",
+					"tokenize": "all"
+				}, {
+					"name": "names.middleName",
+					"tokenize": "all"
+				}, {
+					"name": "names.familyName",
+					"tokenize": "all"
+				}, {
+					"name": "names.honorificSuffix",
+					"tokenize": "all"
+				}, {
+					"name": "organization.name",
+					"tokenize": "all"
+				}, {
+					"name": "nickname",
+					"tokenize": "all"
+				}, {
+					"name": "searchTerms",
+					"tokenize": "all"
+				}, {
+					"name": "ims.value",
+					"tokenize": "all"
+				}, {
+					"name": "emails.value",
+					"tokenize": "all"
+				}]
+			}, {
+				"name": "sortKey",
+				"collate": "secondary"
+			}]
+		}
+	]
+}

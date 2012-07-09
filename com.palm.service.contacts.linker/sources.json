@@ -1,0 +1,16 @@
+[
+	{ "library": { "name": "foundations", "version": "1.0" } },
+	{ "library": { "name": "underscore", "version": "1.0" } },
+    { "library": { "name": "contacts", "version": "1.0" } },
+	{ "library": { "name": "foundations.io", "version": "1.0" } },
+	{ "source" : "yieldController.js" },
+	{ "source" : "jobIdGenerator.js"},
+    { "source" : "Utils.js" },
+	{ "source" : "prologue.js" },
+	{ "source" : "errorCodes.js" },
+	{ "source" : "autoLinkUnit.js" },
+	{ "source" : "watchRevisionNumber.js" },
+	{ "source" : "autolinker.js" },
+	{ "source" : "contactLinkBackup.js" },
+	{ "source" : "linker.js" }
+]

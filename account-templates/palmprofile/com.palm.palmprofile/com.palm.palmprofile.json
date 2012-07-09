@@ -1,0 +1,68 @@
+{
+	"templateId": "com.palm.palmprofile",
+	"loc_name": "HP webOS Account",
+	"icon": {
+		"loc_32x32": "images/mypalm-32x32.png",
+		"loc_48x48": "images/mypalm-48x48.png"
+	},
+    "readPermissions": [
+		"com.palm.service.contacts",
+		"com.palm.app.contacts"
+		],
+    "writePermissions": [
+		"com.palm.accountservices",
+		"com.palm.app.firstuse"
+		],
+	"capabilityProviders": [
+		{
+			"capability": "CONTACTS",
+			"id": "com.palm.palmprofile.contacts",
+			"refetchPhoto": "palm://com.palm.service.contacts/refetchPhoto",
+			"dbkinds": {
+				"contact": "com.palm.contact.palmprofile:1"
+			}
+		},
+		{
+			"capability": "CALENDAR",
+			"id": "com.palm.palmprofile.calendar"
+		},
+		{
+			"capability": "TASKS",
+			"id": "com.palm.palmprofile.tasks"
+		},
+		{
+			"capability": "MEMOS",
+			"id": "com.palm.palmprofile.memos"
+		},
+		{
+			"capability": "PHONE",
+			"id": "com.palm.palmprofile.voice",
+			"loc_name": "Carrier",
+			"loc_shortName": "Carrier",
+			"alwaysOn": true,
+			"icon": {
+				"loc_32x32": "images/mypalm-32x32.png",
+				"loc_48x48": "images/mypalm-48x48.png"
+			}
+		},
+		{
+			"capability": "MESSAGING",
+			"capabilitySubtype": "SMS",
+			"id": "com.palm.palmprofile.sms",
+			"loc_name": "SMS Account",
+			"loc_shortName": "Text",
+			"icon": {
+				"loc_32x32": "images/sms-32x32.png",
+				"loc_48x48": "images/sms-48x48.png",
+				"splitter": "images/sms-32x32.png"
+			}
+		},
+		{
+			"capability": "LOCAL.FILESTORAGE",
+			"id": "com.palm.palmprofile.localfilestore",
+			"icon": {
+				"loc_32x32": "images/touchpad-32x32.png",
+			}
+		}
+	]
+}

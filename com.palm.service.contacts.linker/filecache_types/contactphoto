@@ -1,0 +1,8 @@
+{
+	"typeName": "contactphoto",
+	"loWatermark": 10485760,
+	"hiWatermark": 20971520,
+	"size": 20480,
+	"cost": 100,
+	"lifetime": 63113851
+}

@@ -1,0 +1,17 @@
+[
+	{
+		"title": "Similar IM Tests",
+		"source": "test/similarIMTests.js",
+		"testFunction": "SimilarIMTests"
+	},
+	{
+		"title": "Job ID Generator Tests",
+		"source": "test/jobIdGeneratorTests.js",
+		"testFunction": "JobIdGeneratorTests"
+	},
+	{
+		"title": "YieldController Tests",
+		"source": "test/yieldControllerTests.js",
+		"testFunction": "YieldControllerTests"
+	}
+]

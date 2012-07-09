@@ -1,0 +1,7 @@
+[
+{
+	"title": "Accounts tests",
+	"source": "test/accounts-test.js",
+	"testFunction": "AccountsTests"
+}
+]

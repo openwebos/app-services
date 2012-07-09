@@ -1,0 +1,30 @@
+[{
+	"library": {
+		"name": "underscore",
+		"version": "1.0"
+	}
+},
+{
+	"library": {
+		"name": "foundations",
+		"version": "1.0"
+	}
+},
+{
+	"library": {
+		"name": "foundations.io",
+		"version": "1.0"
+	}
+},
+{
+	"library": {
+		"name": "contacts",
+		"version": "1.0"
+	}
+},
+{
+	"source": "prologue.js"
+},
+{
+	"source": "contactsService.js"
+}]

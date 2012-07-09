@@ -1,0 +1,13 @@
+[
+	{
+		"type": "db.kind",
+		"object": "com.palm.linker.rev:1",
+		"caller": "com.palm.service.contacts.linker",
+		"operations": {
+			"read": "allow",
+			"create": "allow",
+			"delete": "allow",
+			"update": "allow"
+		}
+	}
+]

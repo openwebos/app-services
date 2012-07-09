@@ -1,0 +1,11 @@
+[{
+	"type": "db.kind",
+	"object": "com.palm.account.syncstate:1",
+	"caller": "*",
+	"operations": {
+		"create": "allow",
+		"read": "allow",
+		"update": "allow",
+		"delete": "allow"
+	}
+}]

@@ -1,0 +1,35 @@
+[
+	{
+		"type": "db.kind",
+		"object": "com.palm.person.speeddialbackup:1",
+		"caller": "com.palm.service.contacts.*",
+		"operations": {
+			"read": "allow",
+			"create": "allow",
+			"delete": "allow",
+			"update": "allow"
+		}
+	},
+	{
+		"type": "db.kind",
+		"object": "com.palm.person.speeddialbackup:1",
+		"caller": "com.palm.app.contacts",
+		"operations": {
+			"read": "allow",
+			"create": "allow",
+			"delete": "allow",
+			"update": "allow"
+		}
+	},
+	{
+		"type": "db.kind",
+		"object": "com.palm.person.speeddialbackup:1",
+		"caller": "com.palm.service.contacts",
+		"operations": {
+			"read": "allow",
+			"create": "allow",
+			"delete": "allow",
+			"update": "allow"
+		}
+	}
+]

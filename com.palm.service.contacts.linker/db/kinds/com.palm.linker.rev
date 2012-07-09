@@ -1,0 +1,24 @@
+{ 
+	"id": "com.palm.linker.rev:1",
+	"owner": "com.palm.service.contacts.linker",
+	"schema": {
+		"type": "object",
+		"properties": {
+			"revisionNumber": {
+				"type": "integer",
+				"description": "The last contact revision that was processed by the linker",
+				"optional": false
+			}
+		}
+	},
+	"indexes": [
+		{
+			"name": "revisionNumber", 
+			"props":[
+				{
+					"name":"revisionNumber"
+				}
+			]
+		}
+	]
+}

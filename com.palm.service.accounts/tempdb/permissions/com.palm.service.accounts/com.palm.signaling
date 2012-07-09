@@ -1,0 +1,12 @@
+[{
+	"type": "db.kind",
+	"object": "com.palm.signaling:1",
+	"caller": "*",
+	"operations": {
+		"create": "allow",
+		"read": "allow",
+		"write": "allow",
+		"update": "allow",
+		"delete": "allow"
+	}
+}]

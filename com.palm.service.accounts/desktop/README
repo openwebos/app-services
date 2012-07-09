@@ -1,0 +1,9 @@
+Instructions for running on desktop:
+
+1) ln -s com.palm.account.credentials /etc/palm/db_kinds/com.palm.account.credentials
+2) run the configurator (or manually register the kind)
+3) sudo vi `which run-js-service`
+4) set the jail variable to "off"
+5) cp credentials-model.js ../models
+6) cd ../../
+7) run-js-service -k $PWD/com.palm.service.accounts

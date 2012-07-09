@@ -1,0 +1,35 @@
+{
+	"activity": {
+		"type": { 
+			"persist": true,
+			"userInitiated": true,
+			"background": true
+		},
+		"name": "linkerWatch",
+		"description": "This is the watch for kicking off the linker on changes",
+		"trigger": {
+			"method": "palm://com.palm.db/watch",
+			"params": {
+				"query": {
+					"from": "com.palm.contact:1",
+					"where": [{
+						"prop": "_rev",
+						"op": ">",
+						"val": -1
+					}],
+					"incDel": true
+				},
+				"subscribe": true
+			},
+			"key": "fired"
+		},
+		"callback": {
+			"method": "palm://com.palm.service.contacts.linker/dbUpdatedRelinkChanges",
+			"params": {
+				"revChangedStart": -1
+			}
+		}
+	},
+	"start": true,
+	"replace": false
+}

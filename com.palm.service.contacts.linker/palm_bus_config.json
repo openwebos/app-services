@@ -1,0 +1,4 @@
+{
+	"busNames": ["com.palm.service.contacts.linker"],
+	"privateBusAccess": true
+}

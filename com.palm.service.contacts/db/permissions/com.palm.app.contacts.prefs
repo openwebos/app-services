@@ -1,0 +1,43 @@
+[
+	{
+		"type": "db.kind",
+		"object": "com.palm.app.contacts.prefs:1",
+		"caller": "com.palm.service.contacts.linker",
+		"operations": {
+			"read": "allow",
+			"create": "allow",
+			"delete": "allow",
+			"update": "allow"
+		}
+	},
+	{
+		"type": "db.kind",
+		"object": "com.palm.app.contacts.prefs:1",
+		"caller": "com.palm.app.contacts",
+		"operations": {
+			"read": "allow",
+			"create": "allow",
+			"delete": "allow",
+			"update": "allow"
+		}
+	},
+	{
+		"type": "db.kind",
+		"object": "com.palm.app.contacts.prefs:1",
+		"caller": "com.palm.service.contacts",
+		"operations": {
+			"read": "allow",
+			"create": "allow",
+			"delete": "allow",
+			"update": "allow"
+		}
+	},
+	{
+		"type": "db.kind",
+		"object": "com.palm.app.contacts.prefs:1",
+		"caller": "com.palm.*",
+		"operations": {
+			"read": "allow"
+		}
+	}
+]

@@ -1,0 +1,5 @@
+{
+	"typeName": "contactvcard",
+	"loWatermark": 1024,
+	"hiWatermark": 100000
+}

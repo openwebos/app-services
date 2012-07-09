@@ -1,0 +1,81 @@
+{
+	"type": "object",
+	"description": "an account template",
+	"properties": {
+		"templateId": {
+			"type": "string",
+			"description": "globally unique name for this template in reverse-domain form"
+		},
+		"loc_name": {
+			"type": "string",
+			"description": "Localizable text name for this template, used as a key for localization"
+		},
+		"icon": {
+			"type": "object",
+			"description": "Paths to template icons for various sizes, relative to the template directory. May be localized.",
+			"optional": true,
+			"properties": {
+				"loc_32x32": {
+					"type": "string",
+					"optional": true,
+					"description": "path to 32x32 icon"
+				},
+				"loc_48x48": {
+					"type": "string",
+					"optional": true,
+					"description": "path to 48x48 icon"
+				}
+			}
+		},
+		"validator": {
+			"type": ["string", "object"],
+			"optional": true,
+			"description": "Bus method to use to check credentials for initial login"
+		},
+		"capabilityProviders": {
+			"type": "array",
+			"description": "List of capability definitions supported by this account template",
+			"items": {
+				"type": "object",
+				"description": "Capability definition",
+				"properties": {
+					"capability": {
+						"type": "string",
+						"description": "Capability. 'CONTACTS', 'CALENDAR', 'MAIL' are examples. Palm will reserve names for PIM capabilities."
+					},
+					"id": {
+						"type": "string",
+						"description": "globally unique name for this capability's implementation in reverse-domain form"
+					},
+					"loc_name": {
+						"type": "string",
+						"optional": true,
+						"description": "Localizable text name for this template, used as a key for localization"
+					},
+					"icon": {
+						"type": "object",
+						"description": "Paths to template icons for various sizes, relative to the template directory. May be localized.",
+						"optional": true,
+						"properties": {
+							"loc_32x32": {
+								"type": "string",
+								"optional": true,
+								"description": "path to 32x32 icon"
+							},
+							"loc_48x48": {
+								"type": "string",
+								"optional": true,
+								"description": "path to 48x48 icon"
+							}
+						}
+					},
+					"implementation": {
+						"type": "string",
+						"optional": true,
+						"description": "Bus address of the template implementation. Interface is implied by the Capability."
+					}
+				}
+			}
+		}
+	}
+}

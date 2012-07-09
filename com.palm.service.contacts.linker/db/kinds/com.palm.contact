@@ -1,0 +1,467 @@
+{
+	"id":"com.palm.contact:1",
+	"owner":"com.palm.app.contacts",
+	"schema": {
+		"type": "object",
+		"properties": {
+			"remoteId": {
+				"type": "string",
+				"description": "The remoteId of this contact. This id must remain the same for this contact across multiple syncs, restores, and devices.",
+				"optional": true
+			},
+			"accountId": {
+				"type": "string",
+				"description": "The accountId of this contact. This id is the mojodb id of the account object that the contact was synced from.",
+				"optional": false
+			},
+			"name": {
+				"type": "object",
+				"description": "The broken-out components and fully formatted version of the contacts real name.",
+				"optional": true,
+				"properties": {
+					"familyName": {
+						"type": "string",
+						"optional": true,
+						"description": "The family name of this Contact, or Last Name in most Western languages."
+					},
+					"givenName": {
+						"type": "string",
+						"optional": true,
+						"description": "The given name of this Contact, or First Name in most Western languages."
+					},
+					"middleName": {
+						"type": "string",
+						"optional": true,
+						"description": "The middle names of this Contact."
+					},
+					"honorificPrefix": {
+						"type": "string",
+						"optional": true,
+						"description": "The honorific prefixes of this Contact, or Title in most Western languages."
+					},
+					"honorificSuffix": {
+						"type": "string",
+						"optional": true,
+						"description": "The honorifix suffixes of this Contact, or Suffix in most Western languages."
+					}
+				}
+			},
+			"nickname": {
+				"type": "string",
+				"optional": true,
+				"description": "The casual way to address this contact in real life."
+			},
+			"birthday": {
+				"type": "string",
+				"format": "date",
+				"optional": true,
+				"description": "The birthday of this contact, in the format yyyy-mm-dd using 0000 when the year is unknown."
+			},
+			"anniversary": {
+				"type": "string",
+				"format": "date",
+				"optional": true,
+				"description": "The wedding anniversary of this contact, in the format yyyy-mm-dd using 0000 when the year is unknown."
+			},
+			"gender": {
+				"type": "string",
+				"optional": true,
+				"enum": ["male","female","undisclosed", ""],
+				"description": "The gender of this contact."
+			},
+			"note": {
+				"type": "string",
+				"optional": true,
+				"description": "Note about this contact."
+			},
+			"phoneNumbers": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				},
+				"optional": true,
+				"description": "Phone numbers for this Contact. In addition to the standard Canonical Values for type, this field also defines: mobile, personal fax, work fax, personal, sim, main, and pager."
+			},
+			"emails": {
+				"type": "array",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				},
+				"optional": true,
+				"description": "E-mail addresses for this Contact."
+			},
+			"ims": {
+				"type": "array",
+				"optional": true,
+				"description": "Instant messaging addresses for this Contact.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						},
+						"type": {
+							"type": "string",
+							"description": "A string representing the service this IM Address is valid on.  Current values are: type_aim, type_google, type_irc, type_yjp, type_lcs, type_dotmac, type_icq, type_xmpp, type_msn, type_skype, type_qq, type_jabber, type_yahoo, and type_default"
+						},
+						"label": {
+							"type": "string",
+							"optional": true,
+							"description": "The label of field for this instance, usually used to label the preferred function of the given contact information."
+						}
+					}
+				}
+			},
+			"urls": {
+				"type": "array",
+				"optional": true,
+				"description": "URLs of web pages for this Contact.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				}
+			},
+			"photos": {
+				"type": "array",
+				"optional": true,
+				"description": "Photos representing this Contact.  Whenever possible, the value field should be the remote URL of the photo.  Instead of the canonical values for type, this field defines: type_big and type_square.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						},
+						"localPath": {
+							"type": "string",
+							"description": "The local file path to the photo e.g. /some/path/to/photo.png.  Typically this will be a filecache path."
+						}
+					}
+				}
+			},
+			"addresses": {
+				"type": "array",
+				"optional": true,
+				"description": "Physical mailing addresses for this Contact.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"streetAddress": {
+							"type": "string",
+							"optional": true,
+							"format": "street-address",
+							"description": "The full street address component, which may include house number, street name, PO BOX, and multi-line extended street address information."
+						},
+						"locality": {
+							"type": "string",
+							"optional": true,
+							"format": "locality",
+							"description": "The city or locality component."
+						},
+						"region": {
+							"type": "string",
+							"optional": true,
+							"format": "region",
+							"description": "The state or region component."
+						},
+						"postalCode": {
+							"type": "string",
+							"optional": true,
+							"format": "postal-code",
+							"description": "The zipcode or postal code component."
+						},
+						"country": {
+							"type": "string",
+							"optional": true,
+							"format": "country",
+							"description": "The country name component."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				}
+			},
+			"organizations": {
+				"type": "array",
+				"optional": true,
+				"description": "A current or past organizational affiliation of this Contact.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string",
+							"optional": true,
+							"description": "The name of the organization."
+						},
+						"department": {
+							"type": "string",
+							"optional": true,
+							"description": "The department within this organization."
+						},
+						"title": {
+							"type": "string",
+							"optional": true,
+							"description": "The job title or role within this organization."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of organization, with Canonical Values job and school."
+						},
+						"startDate": {
+							"type": "string",
+							"optional": true,
+							"format": "date",
+							"description": "The date this Contact joined this organization."
+						},
+						"endDate": {
+							"type": "string",
+							"optional": true,
+							"format": "date",
+							"description": "The date this Contact left this organization."
+						},
+						"location": {
+							"type": "object",
+							"optional": true,
+							"description": "The physical location of this organization.",
+							"properties": {
+								"streetAddress": {
+									"type": "string",
+									"optional": true,
+									"format": "street-address",
+									"description": "The full street address component, which may include house number, street name, PO BOX, and multi-line extended street address information."
+								},
+								"locality": {
+									"type": "string",
+									"optional": true,
+									"format": "locality",
+									"description": "The city or locality component."
+								},
+								"region": {
+									"type": "string",
+									"optional": true,
+									"format": "region",
+									"description": "The state or region component."
+								},
+								"postalCode": {
+									"type": "string",
+									"optional": true,
+									"format": "postal-code",
+									"description": "The zipcode or postal code component."
+								},
+								"country": {
+									"type": "string",
+									"optional": true,
+									"format": "country",
+									"description": "The country name component."
+								},
+								"type": {
+									"type": "string",
+									"optional": true,
+									"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+								},
+								"primary": {
+									"type": "boolean",
+									"optional": true,
+									"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+								}
+							}
+						},
+						"description": {
+							"type": "string",
+							"optional": true,
+							"description": "A textual description of the role this Contact played in this organization."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				}
+			},
+			"accounts": {
+				"type": "array",
+				"optional": true,
+				"description": "An online account held by this Contact.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"domain": {
+							"type": "string",
+							"description": "The top-most authoritative domain for this account."
+ 						},
+						"userName": {
+							"type": "string",
+							"description": "An alphanumeric user name, usually chosen by the user"
+						},
+						"userid": {
+							"type": "string",
+							"optional": true,
+							"description": "A user ID number, usually chosen automatically, and usually numeric but sometimes alphanumeric."
+						}
+					}
+				}
+			},
+			"tags": {
+				"type": "array",
+				"optional": true,
+				"description": "User-defined categories or labels for this contact.",
+				"items": "string"
+			},
+			"customFields": {
+				"type": "array",
+				"optional": true,
+				"description": "Custom key-value data pairs for this Contact.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string",
+							"description": "The name of this custom field."
+						},
+						"value": {
+							"type": "string",
+							"description": "The value of this custom field."
+						}
+					}
+				}
+			},
+			"relations": {
+				"type": "array",
+				"optional": true,
+				"description": "List of people related to this Contact.  Instead of the standard types, this field defines: Assistant, Brother, Child, Domestic Partner, Father, Friend, Manager, Mother, Parent, Partner, Referred By, Relative, Sister, Spouse, Other.",
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"type": "string",
+							"description": "The primary value of this field."
+						},
+						"type": {
+							"type": "string",
+							"optional": true,
+							"description": "The type of field for this instance, usually used to label the preferred function of the given contact information."
+						},
+						"primary": {
+							"type": "boolean",
+							"optional": true,
+							"description": "A Boolean value indicating whether this instance of the Plural Field is the primary or preferred value of for this field."
+						}
+					}
+				}
+			}
+		}
+	},
+	"indexes": [{
+		"name": "imsi_name_index",
+		"props": [{
+			"name":"syncSource.extended.imsi"
+		}, {
+			"name":"syncSource.name"
+		}, {
+			"name":"syncSource.extended.index"
+		}]
+	}, {
+		"name": "folderId_rev",
+		"props": [{
+			"name": "folderId"
+		}, {
+			"name": "_rev"
+		}]
+	}, {
+		"name": "rev",
+		"props": [{
+			"name": "_rev"
+		}],
+		"incDel":true
+	}, {
+		"name": "rev_folderId",
+		"props": [{
+			"name": "_rev"
+		}, {
+			"name": "folderId"
+		}]
+	}, {
+		"name": "accountId",
+		"props": [{
+			"name": "accountId"
+		}]
+	}, {
+		"name": "remoteId",
+		"props": [{
+			"name": "remoteId"
+		}]
+	}]  
+}

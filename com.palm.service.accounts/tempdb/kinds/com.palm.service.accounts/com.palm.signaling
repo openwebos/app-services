@@ -1,0 +1,10 @@
+{
+	"id": "com.palm.signaling:1",
+	"sync": false,
+	"indexes": [
+		{
+			"name": "basic",
+			"props": [{ "name": "appId" }]
+		}
+	]
+}

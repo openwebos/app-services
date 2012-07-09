@@ -1,0 +1,64 @@
+{
+	"description": "Contacts autolinker. Takes a contact and finds similar contacts to join together to create people.",
+	"engine": "node",
+	"services": [{
+		"name": "com.palm.service.contacts.linker",
+		"assistant": "LinkerAssistant",
+		"globalized": true,
+		"activityTimeout": 300,
+		"commands": [{
+			"name": "manualLink",
+			"assistant": "ManualLinkerAssistant"
+		},
+		{
+			"name": "manualUnlink",
+			"assistant": "ManualUnlinkerAssistant"
+		},
+		{
+			"name": "setupWatch",
+			"assistant": "SetupWatchAssistant"
+		},
+		{
+			"name": "forceAutolink",
+			"assistant": "ForceAutolinkerAssistant",
+			"commandTimeout": 3600
+		},
+		{
+			"name": "dbUpdatedRelinkChanges",
+			"assistant": "UpdatedDBLinkAssistant",
+			"commandTimeout": 3600
+		},
+		{
+			"name": "yieldAutolink",
+			"assistant": "AutolinkerYieldAssistant"
+		},
+		{
+			"name": "saveNewPersonAndContacts",
+			"assistant": "SaveNewPersonAndContactsAssistant"
+		},
+		{
+			"name": "performedManualLink",
+			"assistant": "ContactLinkBackupPerformedManualLink"
+		},
+		{
+			"name": "performedUnlink",
+			"assistant": "ContactLinkBackupPerformedUnlink"
+		},
+		{
+			"name": "getManualLinks",
+			"assistant": "ContactLinkBackupGetManualLinks"
+		},
+		{
+			"name": "getUnlinkLinks",
+			"assistant": "ContactLinkBackupGetUnlinkLinks"
+		},
+		{
+			"name": "resetCLBDB",
+			"assistant": "ContactLinkBackupResetDBAssistant"
+		},
+		{
+			"name": "deleteOrphanedPerson",
+			"assistant": "DeleteOrphanedPersonAssistant"
+		}]
+	}]
+}

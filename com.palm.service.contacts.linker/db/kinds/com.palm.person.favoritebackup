@@ -1,0 +1,49 @@
+{
+	"id":"com.palm.person.favoritebackup:1",
+	"owner":"com.palm.service.contacts.linker",
+	"sync": true,
+	"schema": {
+		"type": "object",
+		"properties": {
+			"contactBackupHash": {
+				"type": "string",
+				"description": "Contact backup hash for the contact linked to a favorite person",
+				"optional": false
+			},
+			"defaultPropertyHashes": {
+				"type": "array",
+				"optional": true,
+				"items": {
+					"type": "object",
+					"properties": {
+						"value": {
+							"optional": true,
+							"type": "string",
+							"description": "Hash of the properties value"
+						},
+						"type": {
+							"optional": true,
+							"type": "string",
+							"description": "The type of the property. PhoneNumber, Email, IMAddress, ..."
+						},
+						"favoriteData": {
+							"optional": true,
+							"type": "object",
+							"description": "Holds all the app specific data for the default favorite contact point"
+						}
+					}
+				}
+			}
+		}
+	},
+	"indexes":[
+		{
+			"name": "contactBackupHash_index",
+			"props":[
+				{
+					"name":"contactBackupHash"
+				}
+			]
+		}
+	]
+}

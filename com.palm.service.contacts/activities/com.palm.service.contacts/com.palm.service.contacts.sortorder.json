@@ -1,0 +1,33 @@
+{
+	"activity": {
+		"name": "sortOrderWatch",
+		"description": "This is the watch for updating the sortKey on every person when the sort order is changed in the contacts app",
+		"type": {
+			"persist": true,
+			"foreground": true
+		},
+		"trigger": {
+			"method": "palm://com.palm.db/watch",
+			"params": {
+				"query": {
+					"from": "com.palm.app.contacts.prefs:1",
+					"where": [{
+						"prop": "listSortOrder",
+						"op": "!=",
+						"val": ""
+					}]
+				},
+				"subscribe": true
+			},
+			"key": "fired"
+		},
+		"callback": {
+			"method": "palm://com.palm.service.contacts/sortOrderChanged",
+			"params": {
+				"isFirstRun": true
+			}
+		}
+	},
+	"start": true,
+	"replace": true
+}

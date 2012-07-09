@@ -1,0 +1,25 @@
+[{
+	"type": "db.kind",
+	"object": "com.palm.account:1",
+	"caller": "com.palm.*",
+	"operations": {
+		"read": "allow"
+	}
+},	
+{
+	"type": "db.kind",
+	"object": "com.palm.account:1",
+	"caller": "com.quickoffice.webos",
+	"operations": {
+		"read": "allow"
+	}
+},
+{
+	"type": "db.kind",
+	"object": "com.palm.account:1",
+	"caller": "com.quickoffice.ar",
+	"operations": {
+		"read": "allow"
+	}
+}
+]

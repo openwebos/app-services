@@ -1,0 +1,14 @@
+{
+	"id": "com.palm.account:1",
+	"sync": true,
+	"indexes": [
+		{
+			"name": "uniq_tmpl",
+			"props": [{ "name": "beingDeleted" }, { "name": "templateId" }, { "name": "username" }]
+		},
+		{
+			"name": "cap",
+			"props": [{ "name": "capabilityProviders.capability"}, { "name": "beingDeleted" }]
+		}
+	]
+}

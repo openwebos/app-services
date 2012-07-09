@@ -1,0 +1,45 @@
+{
+	"id":"com.palm.person.speeddialbackup:1",
+	"owner":"com.palm.service.contacts.linker",
+	"sync": true,
+	"schema": {
+		"type": "object",
+		"properties": {
+			"contactBackupHash": {
+				"type": "string",
+				"description": "Contact backup hash for the contact linked to a person that has speed dials set",
+				"optional": false
+			}, 
+			"speedDials": {
+				"type": "array",
+				"optional": false,
+				"description": "The array of speeddials to backup",
+				"items": {
+					"type": "object",
+					"properties": {
+						"key": {
+							"type": "string",
+							"description": "The key the speed dial was set to.",
+							"optional": false
+						},
+						"hashedPhoneNumber": {
+							"type": "string",
+							"description": "Phone number the speeddial was set on",
+							"optional": false
+						}
+					}
+				}
+			}
+		}
+	},
+	"indexes":[
+		{
+			"name": "contactBackupHash_index",
+			"props":[
+				{
+					"name":"contactBackupHash"
+				}
+			]
+		}
+	]
+}

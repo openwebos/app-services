@@ -1,0 +1,10 @@
+{
+	"id": "com.palm.contact.palmprofile:1",
+	"owner": "com.palm.service.contacts.linker",
+	"sync": true,
+	"indexes": [
+	],
+	"extends": [
+		"com.palm.contact:1"
+	]
+}

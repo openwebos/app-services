@@ -1,0 +1,7 @@
+{
+	"type": "array",
+	"description": "array of account template objects",
+	"items": {
+		"type": "object"
+	}
+}

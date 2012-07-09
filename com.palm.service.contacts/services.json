@@ -1,0 +1,65 @@
+{
+	"engine": "node",
+	"services": [{
+		"name": "com.palm.service.contacts",
+		"assistant": "ContactsServiceAssistant",
+		"description": "Service for various contacts-related methods",
+		"globalized": true,
+		"commands": [{
+				"name": "preBackup",
+				"assistant": "PhotoPreBackupAssistant"
+			}, {
+				"name": "countVCardContacts",
+				"assistant": "VCardCountContactsAssistant"
+			}, {
+				"name": "readVCard",
+				"assistant": "VCardReadAssistant",
+				"commandTimeout": 3600
+			}, {
+				"name": "importVCard",
+				"assistant": "VCardImportAssistant",
+				"commandTimeout": 3600
+			}, {
+				"name": "vCardExportAll",
+				"assistant": "VCardExportAllAssistant",
+				"commandTimeout": 3600
+			}, {
+				"name" : "vCardExportOne",
+				"assistant" : "VCardExportOneAssistant"
+			}, {
+				"name" : "favoritePerson",
+				"assistant" : "FavoritePersonAssistant"
+			}, {
+				"name" : "setFavoriteDefault",
+				"assistant" : "SetFavoriteDefaultAssistant" 
+			}, {
+				"name" : "setCroppedContactPhoto",
+				"assistant" : "SetCroppedContactPhotoAssistant"
+			}, {
+				"name" : "unfavoritePerson",
+				"assistant" : "UnfavoritePersonAssistant"
+			}, {
+				"name": "findPersonByPhone",
+				"assistant": "FindPersonByPhoneAssistant"
+			}, {
+				"name": "sortOrderChanged",
+				"assistant": "SortOrderChangedAssistant",
+				"commandTimeout": 3600
+			}, {
+				"name": "deleteContactImage",
+				"assistant": "DeleteContactImageAssistant"
+			}, {
+				"name": "SetUpWatch",
+				"assistant": "SetUpWatchAssistant"
+			}, {
+				"name": "refetchPhoto",
+				"assistant": "RefetchPhotoAssistant"
+			}, {
+				"name": "updatePersonLocaleAll",
+				"assistant": "updatePersonLocaleAllAssistant",
+				"commandTimeout": 1800
+			}]
+		}
+	]
+}
+

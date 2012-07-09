@@ -1,0 +1,7 @@
+[
+	{
+		"title": "Photo Backup Tests",
+		"source": "test/photoBackupTests.js",
+		"testFunction": "PhotoBackupTests"
+	}
+]

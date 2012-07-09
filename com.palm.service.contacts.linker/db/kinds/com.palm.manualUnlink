@@ -1,0 +1,57 @@
+{
+	"id": "com.palm.manualUnlink:1",
+	"owner":"com.palm.service.contacts.linker",
+	"sync": true,
+	"schema": {
+		"type": "object",
+		"properties": {
+			"contactEntityA": {
+				"type": "string",
+				"description": "The link hash for one of the contacts involved in a manualUnlink",
+				"optional": false
+			}, 
+			"contactEntityB": {
+				"type": "string",
+				"description": "The link hash for one of the contacts involved in a manualUnlink",
+				"optional": false
+			}
+			
+		}
+	},
+	"indexes":[
+		{
+			"name":"entityAandB",
+			"props":[
+				{
+					"name":"contactEntityAandB",
+					"type":"multi",
+					"include":[{"name":"entityA"},{"name":"entityB"}]
+				}
+			]
+		},
+		{
+			"name":"entityA",
+			"props":[
+				{
+					"name":"contactEntityA"
+				}
+			]
+		}, {
+			"name":"entityB",
+			"props":[
+				{
+					"name":"contactEntityB"
+				}
+			]
+		}, {
+			"name":"entityA_entityB",
+			"props":[
+				{
+					"name":"contactEntityA"
+				}, {
+					"name":"contactEntityB"
+				}
+			]
+		}
+	]
+}

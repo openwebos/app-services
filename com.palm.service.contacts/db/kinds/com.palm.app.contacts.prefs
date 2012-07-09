@@ -1,0 +1,20 @@
+{
+	"id": "com.palm.app.contacts.prefs:1",
+	"owner": "com.palm.app.contacts",
+	"sync": true,
+	"indexes": [{
+		"name": "_id_listSortOrder",
+		"props": [{
+			"name": "_id"
+		},
+		{
+			"name": "listSortOrder"
+		}]
+	},
+	{
+		"name": "listSortOrder",
+		"props": [{
+			"name": "listSortOrder"
+		}]
+	}]
+}

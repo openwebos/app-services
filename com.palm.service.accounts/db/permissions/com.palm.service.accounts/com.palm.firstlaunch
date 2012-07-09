@@ -1,0 +1,12 @@
+[
+	{
+		"type": "db.kind",
+		"object": "com.palm.firstlaunch:1",
+		"caller": "*",
+		"operations": {
+			"read": "allow",
+			"create": "allow",
+			"delete": "allow"
+		}
+	}	
+]

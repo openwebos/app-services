@@ -1,0 +1,16 @@
+{
+	"data" : [ 
+			{"value":"tom@gmail.com","type":"type_home","primary":""},
+			{"value":"tom@gmail.com","type":"type_work","primary":""},
+			{"value":"tom@gmail.com","type":"type_other","primary":""},
+			
+			{"value":"jim@gmail.com","type":"type_home","primary":""},
+			{"value":"jim@gmail.com","type":"type_work","primary":""},
+			{"value":"jim@gmail.com","type":"type_other","primary":""},
+			
+			{"value":"chuck@gmail.com","type":"type_home","primary":""},
+			{"value":"chuck@gmail.com","type":"type_work","primary":""},
+			{"value":"chuck@gmail.com","type":"type_other","primary":""}
+			
+		]
+}

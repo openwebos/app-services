@@ -1,0 +1,105 @@
+{
+	"services": [
+		{
+			"name": "com.palm.service.accounts",
+			"assistant": "AccountsServiceAssistant",
+			"globalized": true,
+			"commands": [
+				{
+					"name": "listAccountTemplates",
+					"assistant": "ListTemplatesCommandAssistant",
+					"public": true
+				},
+				{
+					"name": "listAccounts",
+					"assistant": "ListAccountsCommandAssistant"
+				},
+				{
+					"name": "listAccountsPublic",
+					"assistant": "ListAccountsPublicCommandAssistant",
+					"public": true,
+				},
+				{
+					"name": "getAccountInfo",
+					"assistant": "InfoCommandAssistant",
+					"public": true
+				},
+				{
+					"name": "createAccount",
+					"assistant": "CreateCommandAssistant",
+					"public": true,
+					"commandTimeout": 20
+				},
+				{
+					"name": "modifyAccount",
+					"assistant": "ModifyCommandAssistant",
+					"public": true,
+					"commandTimeout": 3600
+				},
+				{
+					"name": "deleteAccount",
+					"assistant": "DeleteCommandAssistant",
+					"public": true,
+					"commandTimeout": 20
+				},
+				{
+					"name": "readCredentials",
+					"assistant": "ReadCredentialsCommandAssistant"
+				},
+				{
+					"name": "readCredentialsPublic",
+					"assistant": "ReadCredentialsPublicCommandAssistant",
+					"public": true
+				},
+				{
+					"name": "writeCredentials",
+					"assistant": "WriteCredentialsCommandAssistant"
+				},
+				{
+					"name": "hasCredentials",
+					"assistant": "HasCredentialsCommandAssistant"
+				},
+				{
+					"name": "restoreCompleted",
+					"assistant": "RestoreCompletedCommandAssistant"
+				},
+				{
+					"name": "accountsChanged",
+					"assistant": "RestoreCompletedCommandAssistant"
+				},
+				{
+					"name": "appsChanged",
+					"assistant": "AppsChangedCommandAssistant"
+				},
+				
+				
+				{
+					"name": "setPrefs",
+					"assistant": "setPrefsCommandAssistant",
+				},
+				{
+					"name": "notifyAccountCreated",
+					"assistant": "notifyAccountCreatedCommandAssistant",
+					"commandTimeout": 3600
+				},
+				{
+					"name": "notifyAccountDeleted",
+					"assistant": "notifyAccountDeletedCommandAssistant",
+					"commandTimeout": 3600
+				},
+				{
+					"name": "stayRunning",
+					"assistant": "stayRunningCommandAssistant",
+					"commandTimeout": 3600
+				},
+				{
+					"name": "createLocalAccount",
+					"assistant": "CreateLocalAccountAssistant",
+					"public": true,
+					"commandTimeout": 20
+				},
+			]
+		}
+	],
+	"engine": "node"
+}

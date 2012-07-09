@@ -1,0 +1,10 @@
+{
+	"id": "com.palm.firstlaunch:1",
+	"sync": false,
+	"indexes": [
+		{
+			"name": "basic",
+			"props": [{"name":"appId"}]
+		}
+	]
+}
