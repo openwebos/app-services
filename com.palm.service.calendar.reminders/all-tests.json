@@ -1,0 +1,42 @@
+[	
+	{
+		"title": "Reminder Assistant tests",
+		"source": "tests/reminder-assistant-tests.js",
+		"testFunction": "ReminderAssistantTests"
+	},
+	{
+		"title": "Reminder Assistant Util tests",
+		"source": "tests/reminder-assistant-util-tests.js",
+		"testFunction": "ReminderAssistantUtilTests"
+	},
+	{
+		"title": "Init Assistant tests",
+		"source": "tests/init-tests.js",
+		"testFunction": "InitTests"
+	},
+	{
+		"title": "Wake Assistant tests",
+		"source": "tests/wake-tests.js",
+		"testFunction": "WakeTests"
+	},
+	{
+		"title": "Snooze Assistant tests",
+		"source": "tests/snooze-tests.js",
+		"testFunction": "SnoozeTests"
+	},
+	{
+		"title": "Dismiss Assistant tests",
+		"source": "tests/dismiss-tests.js",
+		"testFunction": "DismissTests"
+	},
+	{
+		"title": "AutoClose Assistant tests",
+		"source": "tests/auto-close-tests.js",
+		"testFunction": "AutoCloseTests"
+	},
+	{
+		"title": "DB Changed Assistant tests",
+		"source": "tests/db-changed-tests.js",
+		"testFunction": "DBChangedTests"
+	}
+]

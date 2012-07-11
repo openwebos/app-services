@@ -1,0 +1,4 @@
+{
+	"busNames": ["", "com.palm.service.calendar.reminders"],
+	"privateBusAccess": true
+}

@@ -1,0 +1,13 @@
+[
+	{"library": { "name": "foundations", "version": "1.0" } },
+	{"library": { "name": "calendar", "version": "1.0" } },
+	{ "source": "prologue.js" },
+	{ "source": "utils.js" },
+	{ "source": "reminder-assistant.js" },	
+    { "source": "on-init-handler.js" },
+    { "source": "on-wake-handler.js" },
+    { "source": "on-db-changed-handler.js" },
+    { "source": "on-snooze-handler.js" },
+    { "source": "on-dismiss-handler.js" },
+    { "source": "on-autoclose-handler.js" }
+]

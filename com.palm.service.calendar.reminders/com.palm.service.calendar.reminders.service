@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.palm.service.calendar.reminders
+Exec=/usr/bin/jslauncher com.palm.service.calendar.reminders
+Type=dynamic

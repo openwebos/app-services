@@ -1,0 +1,39 @@
+{
+	"description": "Service for scheduling, updating, and showing of calendar reminders",
+	"engine" : "node",
+	"services":
+	[
+		{
+			"name": "com.palm.service.calendar.reminders",
+			"description": "Handles scheduling of calendar reminders, and triggers reminder display and auto-close",
+			"assistant": "ReminderAssistant",
+			"commands":
+			[
+				{
+					"name": "onInit",
+					"assistant": "InitCommandAssistant"					
+				},
+				{
+					"name": "onWake",
+					"assistant": "WakeCommandAssistant"
+				},
+				{
+					"name": "onDBChanged",
+					"assistant": "DBChangedCommandAssistant"
+				},
+				{
+					"name": "onSnooze",
+					"assistant": "SnoozeCommandAssistant"
+				},
+				{
+					"name": "onDismiss",
+					"assistant": "DismissCommandAssistant"
+				},
+				{
+					"name": "onAutoClose",
+					"assistant": "AutoCloseCommandAssistant"
+				}		
+			]
+		}
+	]
+}

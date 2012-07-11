@@ -1,0 +1,78 @@
+{	"id":"ReminderStatus",
+ 	"type":"object",
+ 	"description": "Status and activity ids of the service.  Should only ever have one entry."
+ 	"properties":{
+ 		"lastRevNumber":{
+        	"type":"string",         
+        	"description":"Revision number indicating the last change we know if in the calendar table"
+      	},
+      	"status":{
+         	"type":"string",
+         	"description":"Last exit status of the service"
+      	},
+      	"wakeActivityId":{
+      		"type":long,
+      		"description":"Activity ID of the next onWake activity scheduled"
+      	},
+      	"autoCloseActivityId":{
+      		"type":long,
+      		"description":"Activity ID of the next onAutoClose activity scheduled"
+      	}
+ 	}
+}
+
+{
+ "id":"Reminder",
+ "type":"object",
+ "properties":{
+      "eventId":{
+         "type":"string",         
+         "description":"Database id of the event this reminder is for"
+      },
+      "subject":{
+         "type":"string",
+         "description":"Subject of the event"
+      },
+      "location":{
+         "type":"string",
+         "optional":"true",
+         "description":"Location of the event"
+      },
+      "isAllDay":{
+         "type":"boolean",
+         "description":"True if the event is an all-day event"
+      },
+      "attendees":{
+         "type":["$ref":"Attendee"]
+         "optional":"true"
+      },
+      "emailAccountId":{
+      	"type": "string",
+      	"description":"Account ID of the user's email account to be used if emailing meeting participants."
+      },
+      "startTime":{
+         "type":"long",
+         "description":"start date and time of this occurrence of the event"
+      },
+      "endTime":{
+         "type":"long",
+         "description":"end date and time of this occurrence of the event"
+      },
+      "alarmTime":{
+		 "type":"long",         
+         "description":"date and time of the start time minus the alarm duration for this occurrence of the event"
+      },
+      "showTime":{
+		 "type":"long",         
+         "description":"date and time the alarm should go off for this occurrence of the event"
+      },
+      "autoCloseTime":{
+		 "type":"long",         
+         "description":"date and time the alarm should be autoclosed"
+      },
+      "isRepeating":{
+         "type":"boolean",
+         "description":"True if the event is a repeating event"
+      }
+   }
+}			

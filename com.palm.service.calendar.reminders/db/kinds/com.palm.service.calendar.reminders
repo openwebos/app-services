@@ -1,0 +1,10 @@
+{
+	"id":"com.palm.service.calendar.reminders:1",
+	"owner":"com.palm.service.calendar.reminders",
+	"indexes":
+	[
+		{"name": "showTime", "props": [{"name": "showTime"}]},
+		{"name": "eventId", "props": [{"name": "eventId"}]},
+		{"name": "autoCloseTime", "props": [{"name": "autoCloseTime"}]}
+	]
+}
