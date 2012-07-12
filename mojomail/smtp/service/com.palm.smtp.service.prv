@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.palm.smtp
+Exec=/usr/bin/mojomail-smtp -c '{"log":{"appender":{"type":"pmlog"},"levels":{"com.palm.smtp":"info"}}}'
+Type=dynamic

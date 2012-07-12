@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.palm.pop
+Exec=/usr/bin/mojomail-pop -c '{"log":{"appender":{"type":"pmlog"},"levels":{"com.palm.pop":"info"}}}' PalmPre Palm-Pre/1.5
+Type=dynamic

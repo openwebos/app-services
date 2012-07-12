@@ -1,0 +1,32 @@
+# Build file for desktop, currently only used for building tests
+# This expects dependencies to be available in the $(BEDLAM_ROOT) directory
+
+BUILD_TYPE := debug
+PLATFORM := linux-x86
+BEDLAM_ROOT ?= /opt/Palm/luna/desktop-binaries
+
+OBJDIR := $(BUILD_TYPE)-$(PLATFORM)
+
+# NOTE: must use the same -DMOJ_DEBUG as mojodb or else it will compile invalid code (different binary layout)
+# On the desktop builds it defaults to enabled
+
+LOCAL_CFLAGS = -O2 -ggdb -Wall -Wuninitialized -Winit-self -Werror -DDEBUG -DMOJ_LINUX -DMOJ_X86 -DMOJ_DEBUG $(shell pkg-config --cflags glib-2.0) -Wno-error=strict-aliasing
+LOCAL_CXXFLAGS = $(LOCAL_CFLAGS)
+ARCH_LDFLAGS ?= -Wl,-rpath-link ${BEDLAM_ROOT}/lib
+LDFLAGS := $(ARCH_LDFLAGS) -L$(BEDLAM_ROOT)/lib -L/opt/Palm/gtest/lib
+LIBS := -lboost_regex -licuuc -licui18n -lcjson -lmjson -lmojocore -lmojoluna
+
+INCLUDES := \
+	-I$(BEDLAM_ROOT)/include \
+	-I$(BEDLAM_ROOT)/include/mojodb \
+	-I$(BEDLAM_ROOT)/include/boost-1_39 \
+	-I$(BEDLAM_ROOT)/include/palmsocket/IncsPublic \
+	-I./inc \
+	-I.
+	
+TEST_INCLUDES := \
+	-Itest \
+	-I/opt/Palm/gtest/include \
+	-Itest-shared
+
+include Makefile.inc

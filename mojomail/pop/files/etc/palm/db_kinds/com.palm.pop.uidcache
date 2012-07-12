@@ -1,0 +1,14 @@
+{
+    "id": "com.palm.pop.uidcache:1",
+    "owner": "com.palm.pop",
+    "indexes": [
+        {
+        	"name" : "prop1",
+            "props": [
+                {
+                    "name": "accountId" 
+                } 
+            ] 
+        } 
+    ] 
+}

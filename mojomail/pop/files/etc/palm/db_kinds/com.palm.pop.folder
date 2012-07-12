@@ -1,0 +1,15 @@
+{
+    "id": "com.palm.pop.folder:1",
+    "owner": "com.palm.pop",
+    "extends": ["com.palm.folder:1"],
+    "indexes": [
+        {
+        	"name" : "prop1",
+            "props": [
+                {
+                    "name": "accountId" 
+                }
+            ] 
+        }
+    ] 
+}

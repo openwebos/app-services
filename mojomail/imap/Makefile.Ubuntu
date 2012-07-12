@@ -1,0 +1,28 @@
+BUILD_TYPE := debug
+PLATFORM := linux-x86
+BEDLAM_ROOT ?= /opt/Palm/luna/desktop-binaries
+
+OBJDIR := $(BUILD_TYPE)-$(PLATFORM)
+
+LOCAL_CFLAGS = -O -ggdb -Wall -Wuninitialized -Winit-self -Werror -DDEBUG -DMOJ_LINUX -DMOJ_X86 -DMOJ_DEBUG $(shell pkg-config --cflags glib-2.0)
+
+LOCAL_CXXFLAGS = $(LOCAL_CFLAGS)
+
+ARCH_LDFLAGS ?= -Wl,-rpath-link ${BEDLAM_ROOT}/lib
+LDFLAGS := $(ARCH_LDFLAGS) -L$(BEDLAM_ROOT)/lib -L../mojomail-common/debug-linux-x86/ -L/opt/Palm/gtest/lib
+
+INCLUDES := \
+	-I$(BEDLAM_ROOT)/include \
+	-I$(BEDLAM_ROOT)/include/mojodb \
+	-I$(BEDLAM_ROOT)/include/boost-1_39 \
+	-I./inc \
+	-I../mojomail-common/inc \
+	-I.
+	
+TEST_INCLUDES := \
+	-Itest \
+	-I/opt/nova \
+	-I/opt/Palm/gtest/include/ \
+	-I../mojomail-common/test-shared
+
+include Makefile.inc

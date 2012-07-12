@@ -1,0 +1,23 @@
+<project name="GrammarAnalyzer" default="compile">
+	<description>
+		Parser generator for mojomail
+	</description>
+
+	<target name="compile">
+		<mkdir dir="bin" />
+		<javac srcdir="src" destdir="bin" />
+	</target>
+
+	<target name="imap" depends="compile">
+		<java classpath="bin" classname="grammar.Analyzer">
+			<arg value="-out" />
+			<arg value="../src/parser/Parser" />
+			<arg value="../src/parser/Grammar.txt" />
+		</java>
+		<move file="../src/parser/Parser.h" todir="../inc/parser/" />
+	</target>
+
+	<target name="clean">
+		<delete dir="bin" />
+	</target>
+</project>

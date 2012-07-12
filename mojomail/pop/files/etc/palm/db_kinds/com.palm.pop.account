@@ -1,0 +1,20 @@
+{
+    "id": "com.palm.pop.account:1",
+    "owner": "com.palm.pop",
+    "extends": ["com.palm.mail.account:1"],
+    "sync": true,
+    "indexes": [
+    	{"name" : "prop1", "props": [{"name": "accountId"}]},
+		{"name": "popAccountChanges", "props": [{"name":"accountId"},{"name": "_revPop"}]}
+    ],
+    "revSets": [
+    	{"name":"_revPop", "props": [{"name":"username"},
+                                     {"name":"server"},
+                                     {"name":"port"},
+                                     {"name":"encryption"},
+                                     {"name":"syncFrequencyMins"},
+                                     {"name":"syncWindowDays"},
+                                     {"name":"deleteOnDevice"},
+                                     {"name":"deleteOnServer"}]}
+	]
+}

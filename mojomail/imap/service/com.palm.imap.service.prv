@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.palm.imap
+Exec=/usr/bin/mojomail-imap -c '{"log": {"appender": {"type": "pmlog"}, "levels": {"com.palm.imap": "info", "com.palm.imap.client": "info", "com.palm.imap.session": "info", "com.palm.mail.activity": "info", "com.palm.mail.validator": "info"}}}'
+Type=dynamic

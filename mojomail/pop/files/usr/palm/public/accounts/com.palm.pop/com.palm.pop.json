@@ -1,0 +1,26 @@
+[
+	{
+		"templateId": "com.palm.pop",
+		"loc_name": "POP",
+		"icon": {
+			"loc_32x32": "images/popmail32.png",
+			"loc_48x48": "images/popmail48.png"
+		},
+		"hidden": true,
+		"validator":{"customUI":{"appId":"com.palm.app.email","name":"accounts/wizard.html"}, "address":"palm://com.palm.pop/validateAccount"},
+		"readPermissions": ["com.palm.app.email", "com.palm.pop", "com.palm.smtp"],
+		"writePermissions": ["com.palm.app.email"],
+		"capabilityProviders": [
+			{
+				"capability": "MAIL",
+				"id": "com.palm.pop.mail",
+				"implementation": "palm://com.palm.pop/",
+				"onCreate":"palm://com.palm.pop/accountCreated",
+				"onDelete":"palm://com.palm.pop/accountDeleted",
+				"onEnabled":"palm://com.palm.pop/accountEnabled",
+				"onCredentialsChanged":"palm://com.palm.pop/credentialsChanged",
+				"subKind":"com.palm.email.pop:1"
+			}
+		]
+	}
+]

@@ -1,0 +1,48 @@
+{
+	"id": "com.palm.imap.email:1",
+	"owner": "com.palm.email",
+	"extends": ["com.palm.email:1"],
+	"indexes": [
+		{
+			"name" : "Sync",
+			"props": [
+				{"name": "folderId"},
+				{"name": "uid"},
+				{"name": "_rev"}
+			],
+			"incDel": true
+		},
+		{
+			"name" : "AutoDownload",
+			"props": [
+				{"name": "folderId"},
+				{"name": "timestamp"}
+			]
+		},
+		{
+			"name" : "Upsync",
+			"props": [
+				{"name": "folderId"},
+				{"name": "UpsyncRev"}
+			],
+			"incDel": true
+		},
+		{
+			"name" : "UID",
+			"props": [
+				{"name": "folderId"},
+				{"name": "uid"}
+			]
+		}
+	],
+	"revSets": [
+		{
+			"name": "UpsyncRev",
+			"props": [
+				{"name": "_del"},
+				{"name": "flags"},
+				{"name": "destFolderId"}
+			]
+		}
+	]
+}

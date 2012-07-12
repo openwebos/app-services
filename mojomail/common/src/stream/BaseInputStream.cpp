@@ -1,0 +1,78 @@
+// @@@LICENSE
+//
+//      Copyright (c) 2010-2012 Hewlett-Packard Development Company, L.P.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// LICENSE@@@
+
+#include "stream/BaseInputStream.h"
+
+InputStreamSink::InputStreamSink(const MojRefCountedPtr<BaseInputStream>& source)
+: m_source(source)
+{
+	if(source.get()) {
+		m_source->SetSink(this);
+	}
+}
+
+InputStreamSink::~InputStreamSink()
+{
+	if(m_source.get())
+		m_source->RemoveSink(this);
+}
+
+void InputStreamSink::DisconnectFromSource()
+{
+	m_source = NULL;
+}
+
+ChainableInputStream::ChainableInputStream(const MojRefCountedPtr<BaseInputStream>& source)
+: BaseInputStream(source),
+  m_sink(NULL)
+{
+}
+
+ChainableInputStream::~ChainableInputStream()
+{
+}
+
+void ChainableInputStream::SetSink(InputStreamSink* sink)
+{
+	if(m_sink) {
+		m_sink->DisconnectFromSource();
+	}
+
+	m_sink = sink;
+}
+
+void ChainableInputStream::RemoveSink(InputStreamSink* sink)
+{
+	if(m_sink == sink) {
+		m_sink = NULL;
+	}
+}
+
+void ChainableInputStream::StartReading()
+{
+	if(m_source.get()) {
+		m_source->StartReading();
+	}
+}
+
+void ChainableInputStream::DoneReading()
+{
+	if(m_source.get()) {
+		m_source->DoneReading();
+	}
+}

@@ -1,0 +1,86 @@
+#!/bin/sh
+
+# Debug log level
+LOGGING='{"appender": {"type": "stdout"}, "levels":{"com.palm.imap": "debug", "com.palm.imap.client": "debug", "com.palm.imap.session": "debug", "com.palm.mail.validator": "debug", "com.palm.mail.protocol": "debug", "com.palm.mail.common": "info", "com.palm.mail.activity":"debug"}}'
+
+# Seconds before shutting down if inactive. Zero means never.
+TIMEOUT="0"
+
+# Max number of emails per folder
+#MAX_EMAILS="1000"
+
+# Disable auto-sync when opening a folder in the email app
+#IGNORE_VIEW="false"
+
+# Ignore networkConfidenceLevel when connecting or scheduling a sync
+#IGNORE_NETWORK="false"
+
+# Send LOGOUT command before disconnecting from the server
+#CLEAN_DISCONNECT="false"
+
+# DEFLATE support for servers that support it
+#ENABLE_COMPRESS="true"
+
+# Seconds to stay connected to the server after recent user interaction. Experimental.
+# 0 means disconnect immediately. Max 300 seconds.
+#SESSION_KEEP_ALIVE="0"
+
+# Stay connected to the server for up to 15 minutes while waiting for the next sync. Experimental.
+#KEEP_ALIVE_FOR_SYNC="false"
+
+add_config () {
+  if [ -n "$CONFIG" ]; then
+  	CONFIG="$CONFIG, \"$1\": $2"
+  else
+    CONFIG="\"$1\":$2"
+  fi
+}
+
+add_config_if_present () {
+	if [ -n "$2" ]; then
+		add_config "$1" "$2"
+	fi
+}
+
+CONFIG=""
+PREFIX=""
+
+# Parse options
+for arg in "$@"; do
+  case "$arg" in
+  -kill)     while killall -q mojomail-imap; do echo "Killed existing mojomail-imap"; done ;;
+  -run)      PREFIX="" ;;
+  -gdb)      PREFIX="gdb --args" ;;
+  -rungdb)   PREFIX="gdb -ex run --args" ;;
+  -valgrind)
+    if [ `hostname` = "qemux86" ]; then
+      PREFIX="valgrind --tool=memcheck --malloc-fill=0xBA --free-fill=0xDA --track-origins=yes --read-var-info=yes"
+    else
+      PREFIX="valgrind --tool=memcheck --malloc-fill=0xBA --free-fill=0xDA"
+    fi
+    ;;
+  -leakcheck)   PREFIX="valgrind --tool=memcheck --show-reachable=yes --leak-check=full" ;;
+  -syslog)      LOGGING="`echo "$LOGGING" | sed 's/stdout/syslog/g'`" ;;
+  -pmlog)       LOGGING="`echo "$LOGGING" | sed 's/stdout/pmlog/g'`" ;;
+  -heap)        PREFIX="jemalloc-profiling-launcher" ;;
+  -quiet)       LOGGING="`echo "$LOGGING" | sed 's/debug/info/g'`" ;;
+  -quieter)     LOGGING="`echo "$LOGGING" | sed 's/debug\|info/notice/g'`" ;;
+  -ignoreview)  IGNORE_VIEW="true" ;;
+  -ignorenet)   IGNORE_NETWORK="true" ;;
+  -status)		luna-send -f -n 1 palm://com.palm.imap/status '{}'; exit 0 ;;
+  -sub)			luna-send -i palm://com.palm.imap/status '{"subscribe": true}'; exit 0 ;;
+  esac
+done
+
+# Build config json
+add_config "log" "$LOGGING"
+add_config_if_present "inactivityTimeoutSeconds" $TIMEOUT
+add_config_if_present "maxEmails" $MAX_EMAILS
+add_config_if_present "ignoreViewFolder" $IGNORE_VIEW
+add_config_if_present "ignoreNetworkStatus" $IGNORE_NETWORK
+add_config_if_present "cleanDisconnect" $CLEAN_DISCONNECT
+add_config_if_present "enableCompress" $ENABLE_COMPRESS
+add_config_if_present "sessionKeepAlive" $SESSION_KEEP_ALIVE
+add_config_if_present "keepAliveForSync" $KEEP_ALIVE_FOR_SYNC
+
+exec $PREFIX mojomail-imap -c "{$CONFIG}"
