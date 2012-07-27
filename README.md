@@ -15,7 +15,7 @@ app-services is used by:
 
 ## Limitations
 
-Note: The following limitations apply to this July 2012 Beta release. Additional functionality will be supported in the future.
+Please refer https://github.com/openwebos/core-apps
 
 # Copyright and License Information
 
