@@ -11,7 +11,7 @@ This repository contains the following source folders with individual README fil
 
 app-services is used by:
 
-* core-apps-services https://github.com/openwebos/core-apps are the applications in Open webOS 1.0, that make use of the app-services.
+* core-apps - https://github.com/openwebos/core-apps - the applications in Open webOS 1.0.
 
 ## Limitations
 
