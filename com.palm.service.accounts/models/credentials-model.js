@@ -16,135 +16,107 @@
 //
 // LICENSE@@@
 
-/*global _ PalmCall Assert Foundations */
+/*global _ PalmCall Assert Foundations DB */
 // KeyStore abstraction layer for encrypted storage of passwords, auth tokens, etc.
 
+// To run in the simulator, comment out everything from 'putCredentials' through
+// the 'return'. Uncomment the rest of the code to the end of the file, which
+// depends on MojoDB instead of the native keymanager service.
+
 var KeyStore = function() {
-	
-	var keyStoreFuture = new Foundations.Control.Future(null);
 
-	var KEYMGR_URI = "palm://com.palm.keymanager/";
+	function Credentials() {
+		this._kind = Credentials.kind;
+	}
 	
-	function putCredentials(accountId, key, value) {
-		var keydata;
-		var future = PalmCall.call(KEYMGR_URI, "fetchKey", {
-			keyname: accountId
+	Credentials.kind = "com.palm.account.credentials:1";
+	Credentials.COMMON = "common";
+
+	function makeKey(accountId, key) {
+		return accountId + ':' + key;
+	}
+	
+	function mojodbGetRaw(accountId, key) {
+		return DB.find({
+			from: Credentials.kind,
+			where: [{
+				prop: "key",
+				op: "=",
+				val: makeKey(accountId, key)
+			}]
 		});
+	}
+	
+	function mojodbPut(accountId, key, val) {
+		var future = mojodbGetRaw(accountId, key);
+		
 		future.then(function() {
-			try {
-				// Fire the exception if there is one
-				future.getResult();
-			} catch (e) {
-				keydata = {};
-				future.result = {};
-				return;
+			var results = future.result.results;
+			var c = new Credentials();
+			
+			if (results && results.length > 0) {
+				c._id = results[0]._id;
+				c._rev = results[0]._rev;
 			}
-
-			keydata = JSON.parse(future.result.keydata);
-
-			// Remove the key with this accountId, so it can be replaced
-			future.nest(PalmCall.call(KEYMGR_URI, "remove", {
-				"keyname": accountId
-			}));
+			
+			c.key = makeKey(accountId, key);
+			c.val = val;
+			
+			future.nest(DB.put([c]));
 		});
-		future.then(function() {
-			future.getResult();
-			keydata[key] = value;
-
-			future.nest(PalmCall.call(KEYMGR_URI, "store", {
-				keyname: accountId,
-				keydata: JSON.stringify(keydata),
-				type:    "ASCIIBLOB",
-				nohide:  true
-			}));
-		});
+		
 		return future;
 	}
-
-	function getCredentials(accountId, key) {
-		var future = PalmCall.call(KEYMGR_URI, "fetchKey", {
-			keyname: accountId
-		});
+	
+	function mojodbGet(accountId, key) {
+		var future = mojodbGetRaw(accountId, key);
+		
+		// unwrap array of results into a single expected result (or throw an error)
 		future.then(function() {
-			var success;
-			
-			try {
-				var credentials = JSON.parse(future.result.keydata)[key];
-
-				if (credentials) {
-					future.result = {
-						credentials: credentials
-					};
-					success = true;
-				}
-			} catch (e) {
-			}
-			
-			if (!success) {
-				future.setException({
-					message: "Credentials for key '" + key + "' not found " +
-						"in account '" + accountId + "'",
-					errorCode: "CREDENTIALS_NOT_FOUND"
-				});
-			}
-			
-		});
-		return future;
-	}
-
-	function deleteCredentials(accountId) {
-		return PalmCall.call(KEYMGR_URI, "remove", {
-			keyname: accountId
-		});
-	}
-
-	function hasCredentials(accountId) {
-		var future = PalmCall.call(KEYMGR_URI, "keyInfo", {
-			keyname: accountId
-		});
-		future.then(function() {
-			var r;
-			var success;
-			
-			try {
-				r = future.result;
-				success = true;
-			} catch (e) {
-				success = false;
-			}
+			var arr = future.result.results;
+			Assert.require(arr && arr.length > 0, "Credentials not found: " + key);
 			future.result = {
-				value: success
+				credentials: arr[0].val
+			};
+		});
+		
+		return future;
+	}
+	
+	function mojodbDel(accountId) {
+		return DB.del({
+			from: Credentials.kind,
+			where: [{
+				prop: "key",
+				op: "%",
+				val: makeKey(accountId, "")
+			}]
+		});
+	}
+	
+	function mojodbHas(accountId) {
+		var future = DB.find({
+			from: Credentials.kind,
+			where: [{
+				prop: "key",
+				op: "%",
+				val: accountId
+			}]
+		});
+		future.then(function() {
+			var arr = future.result.results;
+			future.result = {
+				value: (arr.length > 0)
 			};
 		});
 		return future;
 	}
-
-	function enqueueCall(f) {
-		return function() {
-			var args = Array.prototype.slice.call(arguments);
-
-			var external = new Foundations.Control.Future(null);
-			external.then(function() {
-				keyStoreFuture.then(function() {
-					keyStoreFuture.nest(f.apply(null, args));
-				});
-				keyStoreFuture.then(function() {
-					try {
-						external.result = keyStoreFuture.result;
-					} catch (e) {
-						external.exception = keyStoreFuture.exception;
-					}
-					keyStoreFuture.result = undefined;  // re-prime the future for the next command
-				});
-			});
-			return external;
-		};
-	}
-
+	
 	return {
-		put: enqueueCall(putCredentials),
-		get: enqueueCall(getCredentials),
-		del: enqueueCall(deleteCredentials),
-		has: enqueueCall(hasCredentials)
+		put: mojodbPut,
+		get: mojodbGet,
+		del: mojodbDel,
+		has: mojodbHas
 	};
+	
 }();
