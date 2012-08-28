@@ -17,7 +17,7 @@
 // LICENSE@@@
 
 #include "network/SocketConnection.h"
-#include "palmsocket.h"
+#include "palmsocket/palmsocket.h"
 #include "CommonPrivate.h"
 #include "exceptions/GErrorException.h"
 #include <sstream>

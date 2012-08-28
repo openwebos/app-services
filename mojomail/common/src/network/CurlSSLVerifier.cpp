@@ -20,7 +20,7 @@
 #include <openssl/ssl.h>
 #include "exceptions/CurlException.h"
 #include "network/CurlConnection.h"
-#include "palmsockopensslutils.h"
+#include "palmsocket/palmsockopensslutils.h"
 
 using namespace std;
 
