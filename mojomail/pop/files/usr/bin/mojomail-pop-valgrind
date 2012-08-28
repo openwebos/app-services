@@ -1,2 +1,0 @@
-#!/bin/sh
-valgrind -v --tool=memcheck --leak-check=full /usr/bin/mojomail-pop -c {\"log\":{\"appender\":{\"type\":\"stdout\"},\"levels\":{\"com.palm.pop\":\"debug\"}}} PalmPre Palm-Pre/1.5

@@ -1,0 +1,68 @@
+{
+    "id": "com.palm.pop.email:1",
+    "owner": "com.palm.pop",
+    "extends": ["com.palm.email:1"],
+    "indexes": [
+        {
+        	"name" : "prop1",
+            "props": [
+                {
+                    "name": "folderId" 
+                },
+                {
+                    "name": "timestamp" 
+                } 
+            ] 
+        },
+        {
+        	"name" : "Sync",
+            "props": [
+                {
+                    "name": "folderId" 
+                },
+                {
+                    "name": "serverUid" 
+                },
+                {
+                    "name": "timestamp" 
+                },
+                {
+                	"name": "_rev"
+                }
+            ],
+            "incDel": true
+        },
+        {
+        	"name" : "FetchDeletedEmails",
+        	"props": [
+        		{
+        			"name": "folderId"
+        		},
+        		{
+        			"name": "_rev"
+        		}
+        	],
+        	"incDel": true
+        },
+        {
+        	"name" : "FetchEmailChanges",
+            "props": [
+                {
+                    "name": "folderId" 
+                },
+                {
+                    "name": "lastSyncRev" 
+                }
+            ],
+            "incDel": true
+        },
+        {
+        	"name" : "MoveEmail",
+        	"props": [
+        		{
+        			"name": "destFolderId"
+        		}
+        	]
+        }
+    ]
+}

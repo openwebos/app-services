@@ -1,32 +1,62 @@
 Mojomail-POP
 ============
-
+Summary
+-------
 POP3 email transport service for webOS.
 
-# How to Build on Linux
+Description
+-----------
+POP3 email transport service for webOS.
 
-## Dependencies
+Dependencies
+============
+Below are the tools and libraries required to build.
+	- gcc 4.3
+	- cmake 2.8.7 
+	- pkg-config
+	- make (any version)
 
-### Tools
-* gcc 4.3
-* make (any version)
-* pkg-config
+	- boost 1.39 or later
+	- icu4c 3.8 or later
+	- libcurl 7.21 or later
+	- glib 2.0 or later
+	- zlib
+	- openwebos/app-services/mojomail/common libraries.
+	- openwebos/Db8 libraries (libmojocore, libmojoluna)
+	- openwebos/libpalmsocket 2.0.0
+	- openwebos/libsandbox 2.0.0
+	- openwebos/cmake-modules-webos
 
-### Libraries
-* boost 1.39 or later
-* icu4c 3.8 or later
-* libcurl 7.21 or later
-* glib 2.0 or later
-* zlib
-* mojodb libraries (libmojocore, libmojoluna)
-* PmLogLib
-* libpalmsocket
-* libsandbox
-* openwebos/app-services/mojomail/common libraries.
+How to Build on Linux
+=====================
 
-## How to build
+## Building
 
-This release is provided for informational purpose only. No build support is provided at this time.
+Once you have downloaded the source, execute the following to build it (after
+changing into the directory under which it was downloaded):
+
+    $ mkdir BUILD
+    $ cd BUILD
+    $ cmake ..
+    $ make
+    $ sudo make install
+
+The directory under which the files are installed defaults to
+<tt>/usr/local/webos</tt>.
+You can install them elsewhere by supplying a value for
+<tt>WEBOS_INSTALL_ROOT</tt>
+when invoking <tt>cmake</tt>. For example:
+
+    $ cmake -D WEBOS_INSTALL_ROOT:PATH=$HOME/projects/openwebos ..
+    $ make
+    $ make install
+
+will install the files in subdirectories of <tt>$HOME/projects/openwebos</tt>.
+
+Specifying <tt>WEBOS_INSTALL_ROOT</tt> also causes <tt>pkg-config</tt> to look
+in that tree first before searching the standard locations. You can specify
+additional directories to be searched prior to this one by setting the
+the <tt>PKG_CONFIG_PATH</tt> environment variable.
 
 # Copyright and License Information
 

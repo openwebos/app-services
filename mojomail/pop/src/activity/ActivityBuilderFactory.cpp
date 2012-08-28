@@ -233,7 +233,7 @@ void ActivityBuilderFactory::BuildScheduledSync(ActivityBuilder &builder, int in
 	builder.SetDescription(desc.data());
 	builder.SetPersist(true);
 	builder.SetExplicit(true);
-	builder.SetRequiresInternet(true);
+	builder.SetRequiresInternet(false);
 	builder.SetSyncInterval(0, intervalSecs);
 	builder.SetImmediate(true, "low");
 
@@ -268,7 +268,7 @@ void ActivityBuilderFactory::BuildFolderRetrySync(ActivityBuilder &builder, cons
 	builder.SetDescription(desc.data());
 	builder.SetPersist(true);
 	builder.SetExplicit(true);
-	builder.SetRequiresInternet(true);
+	builder.SetRequiresInternet(false);
 	builder.SetImmediate(true, "low");
 	builder.SetSyncInterval(0, intervalSecs);
 
