@@ -107,7 +107,7 @@ void ImapActivityFactory::SetMetadata(MojObject& metadata, const char* name, con
 
 void ImapActivityFactory::SetNetworkRequirements(ActivityBuilder& ab, bool requireFair)
 {
-	ab.SetRequiresInternet(true);
+	ab.SetRequiresInternet(false);
 
 	if(requireFair && !ImapConfig::GetConfig().GetIgnoreNetworkStatus()) {
 		ab.SetRequiresInternetConfidence("fair");
@@ -294,7 +294,7 @@ void ImapActivityFactory::BuildStartIdle(ActivityBuilder& ab, const MojObject& a
 	ab.SetExplicit(false);
 	ab.SetPersist(true);
 	ab.SetImmediate(true, "low");
-	SetNetworkRequirements(ab, true);
+	SetNetworkRequirements(ab, false);
 
 	// Metadata
 	MojObject metadata;
@@ -429,5 +429,5 @@ void ImapActivityFactory::BuildConnect(ActivityBuilder& ab, const MojObject& acc
 	ab.SetExplicit(false);
 	ab.SetPersist(false);
 	ab.SetForeground(true);
-	ab.SetRequiresInternet(true);
+	ab.SetRequiresInternet(false);
 }

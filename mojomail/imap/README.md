@@ -1,7 +1,11 @@
 Mojomail-IMAP
 ===============
-
+Summary
+--------
 IMAP sync transport for webOS.
+
+Description
+------------
 
 # Directory layout
 
@@ -20,33 +24,58 @@ IMAP sync transport for webOS.
     GrammarAnaylzer/        - used to generate Parser.{cpp,h} from src/parser/Grammar.txt
 
     files/
-        etc/palm/db_kinds   - database kinds
+        db8/kinds		    - database kinds
         usr/palm/public     - account templates
 
-# How to Build on Linux
+Dependencies
+============
+Below are the tools and libraries required to build.
+	- gcc 4.3
+	- cmake 2.8.7 
+	- pkg-config
+	- make (any version)
 
-## Dependencies
+	- boost 1.39 or later
+	- icu4c 3.8 or later
+	- libcurl 7.21 or later
+	- glib 2.0 or later
+	- zlib
+	- openwebos/app-services/mojomail/common libraries.
+	- openwebos/Db8 libraries (libmojocore, libmojoluna)
+	- openwebos/libpalmsocket 2.0.0
+	- openwebos/libsandbox 2.0.0
+	- openwebos/cmake-modules-webos
 
-### Tools
-* gcc 4.3
-* make (any version)
-* pkg-config
+How to Build on Linux
+=====================
 
-### Libraries
-* boost 1.39 or later
-* icu4c 3.8 or later
-* libcurl 7.21 or later
-* glib 2.0 or later
-* zlib
-* mojodb libraries (libmojocore, libmojoluna)
-* PmLogLib
-* libpalmsocket
-* libsandbox
-* openwebos/app-services/mojomail/common libraries.
+## Building
 
-## How to build
+Once you have downloaded the source, execute the following to build it (after
+changing into the directory under which it was downloaded):
 
-This release is provided for informational purpose only. No build support is provided at this time.
+    $ mkdir BUILD
+    $ cd BUILD
+    $ cmake ..
+    $ make
+    $ sudo make install
+
+The directory under which the files are installed defaults to
+<tt>/usr/local/webos</tt>.
+You can install them elsewhere by supplying a value for
+<tt>WEBOS_INSTALL_ROOT</tt>
+when invoking <tt>cmake</tt>. For example:
+
+    $ cmake -D WEBOS_INSTALL_ROOT:PATH=$HOME/projects/openwebos ..
+    $ make
+    $ make install
+
+will install the files in subdirectories of <tt>$HOME/projects/openwebos</tt>.
+
+Specifying <tt>WEBOS_INSTALL_ROOT</tt> also causes <tt>pkg-config</tt> to look
+in that tree first before searching the standard locations. You can specify
+additional directories to be searched prior to this one by setting the
+the <tt>PKG_CONFIG_PATH</tt> environment variable.
 
 
 

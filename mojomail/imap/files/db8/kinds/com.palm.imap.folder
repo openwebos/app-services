@@ -1,0 +1,18 @@
+{
+    "id": "com.palm.imap.folder:1",
+    "owner": "com.palm.imap",
+    "extends": ["com.palm.folder:1"],
+    "indexes": [
+        {
+        	"name" : "prop1",
+            "props": [
+                {
+                    "name": "accountId" 
+                },
+                {
+                    "name": "serverFolderName" 
+                } 
+            ] 
+        }
+    ] 
+}

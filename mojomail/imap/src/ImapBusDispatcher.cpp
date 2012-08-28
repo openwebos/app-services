@@ -591,6 +591,16 @@ void ImapBusDispatcher::Status(MojObject& status) const
 
 	if(m_networkStatusMonitor.get()) {
 		MojObject monitorStatus;
+
+#ifdef WEBOS_TARGET_MACHINE_STANDALONE
+	//Set the Network Status to true and assumes the internet connection is available.
+	MojObject cmStatus;
+	err = cmStatus.put("isInternetConnectionAvailable", true);
+	ErrorToException(err);
+	m_networkStatusMonitor->SetFakeStatus(cmStatus, true /*persist set to true */);
+#endif
+
+
 		m_networkStatusMonitor->Status(monitorStatus);
 
 		err = status.put("networkStatusMonitor", monitorStatus);

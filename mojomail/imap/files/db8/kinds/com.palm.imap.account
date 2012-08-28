@@ -1,0 +1,31 @@
+{
+	"id": "com.palm.imap.account:1",
+	"owner": "com.palm.imap",
+	"extends": ["com.palm.mail.account:1"],
+	"sync": true,
+	"indexes": [
+		{
+			"name" : "ImapConfig",
+			"props": [
+				{ "name": "accountId" },
+				{ "name": "ImapConfigRev" }
+			]
+		}
+	],
+	"revSets": [
+		{
+			"name": "ImapConfigRev",
+			"props": [
+				{ "name": "syncFrequencyMins" },
+				{ "name": "syncWindowDays" },
+				{ "name": "draftsFolderId" },
+				{ "name": "sentFolderId" },
+				{ "name": "trashFolderId" },
+				{ "name": "username" },
+				{ "name": "server" },
+				{ "name": "port" },
+				{ "name": "encryption" }
+			]
+		}
+	]
+}
