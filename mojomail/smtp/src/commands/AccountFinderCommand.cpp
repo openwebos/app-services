@@ -220,7 +220,7 @@ void AccountFinderCommand::GetSmtpCredentials()
 		MojErr err = params.put("accountId", m_accountId);
 		ErrorToException(err);
 
-		err = params.putString("name", "smtp");
+		err = params.putString("name", "common");
 		ErrorToException(err);
 		// TODO: Should send the request with SmtpClient instead.
 		err = m_session.CreateRequest()->send(m_getSmtpCredentialsResponseSlot, "com.palm.service.accounts", "readCredentials", params);

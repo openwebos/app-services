@@ -79,7 +79,7 @@ void SmtpActivityFactory::BuildOutboxWatch(ActivityBuilder& ab, const MojObject&
 	ab.SetDescription("Watches SMTP outbox for new emails");
 	ab.SetPersist(true);
 	ab.SetExplicit(true);
-	ab.SetRequiresInternet(true); // don't trigger until we also have connectivity
+	ab.SetRequiresInternet(false); // don't trigger until we also have connectivity
 	ab.SetImmediate(true, ActivityBuilder::PRIORITY_LOW);
 
 	// Callback

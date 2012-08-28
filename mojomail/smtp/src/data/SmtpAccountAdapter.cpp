@@ -33,7 +33,7 @@ const char* const SmtpAccountAdapter::SERVER				= "server";
 const char* const SmtpAccountAdapter::PORT 					= "port";
 const char* const SmtpAccountAdapter::ENCRYPTION	 		= "encryption";
 const char* const SmtpAccountAdapter::CONFIG 				= "config";
-const char* const SmtpAccountAdapter::DOMAIN				= "domain";
+const char* const SmtpAccountAdapter::DOMAINN				= "domain";
 const char* const SmtpAccountAdapter::PASSWORD				= "password";
 const char* const SmtpAccountAdapter::USE_SMTP_AUTH			= "useSmtpAuth";
 

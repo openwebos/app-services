@@ -65,6 +65,15 @@ SmtpSyncOutboxCommand::SmtpSyncOutboxCommand(SmtpClient& client, const MojObject
 	m_accountId.stringValue(d);
 	m_outboxWatchActivityName.format(SmtpActivityFactory::OUTBOX_WATCH_ACTIVITY_FMT, d.data());
 	m_accountWatchActivityName.format(SmtpActivityFactory::ACCOUNT_WATCH_ACTIVITY_FMT, d.data());
+
+#ifdef WEBOS_TARGET_MACHINE_STANDALONE
+	MojObject cmStatus;
+	MojErr err;
+	err = cmStatus.put("isInternetConnectionAvailable", true);
+    ErrorToException(err);
+    m_networkStatus->ParseStatus(cmStatus);
+#endif
+
 }
 
 SmtpSyncOutboxCommand::~SmtpSyncOutboxCommand()
@@ -232,7 +241,7 @@ void SmtpSyncOutboxCommand::CheckNetworkConnectivity()
 			ab.SetName(name);
 			ab.SetDescription("Activity representing SMTP Outbox Sync Network Monitor");
 			ab.SetForeground(true);
-			ab.SetRequiresInternet(true);
+			ab.SetRequiresInternet(false);
 			ab.SetImmediate(true, ActivityBuilder::PRIORITY_LOW);
 			m_networkActivity = Activity::PrepareNewActivity(ab);
 			m_networkActivity->SetSlots(m_networkActivityUpdatedSlot, m_networkActivityErrorSlot);

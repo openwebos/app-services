@@ -1,0 +1,14 @@
+{
+    "role": {
+        "exeName":"@WEBOS_INSTALL_BINDIR@/mojomail-smtp",
+        "type": "regular",
+        "allowedNames": ["com.palm.smtp"]
+    },
+    "permissions": [
+        {
+            "service":"com.palm.smtp",
+            "inbound":["*"],
+            "outbound":["*"]
+        }
+    ]
+}

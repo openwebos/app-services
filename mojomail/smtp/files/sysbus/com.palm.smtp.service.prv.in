@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=com.palm.smtp
+Exec=@WEBOS_INSTALL_BINDIR@/mojomail-smtp -c '{"log":{"appender":{"type":"syslog"},"levels":{"com.palm.smtp":"info"}}}'
+Type=dynamic

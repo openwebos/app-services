@@ -48,7 +48,7 @@ public:
 	static const char* const REQUIRE_SSL;
 	static const char* const TLS;
 	static const char* const TLS_IF_AVAILABLE;
-	static const char* const DOMAIN;
+	static const char* const DOMAINN;
 	static const char* const PASSWORD;
 	static const char* const USE_SMTP_AUTH;
 
