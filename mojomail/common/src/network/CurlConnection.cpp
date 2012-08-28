@@ -372,8 +372,8 @@ HttpConnection::ConnectionError CurlConnection::GetErrorCode(CURLcode code)
 			return HTTP_ERROR_FAILED_INIT;
 		case CURLE_URL_MALFORMAT:
 			return HTTP_ERROR_URL_MALFORMAT;
-		case CURLE_NOT_BUILT_IN:
-			return HTTP_ERROR_OBSOLETE4;
+		//case CURLE_NOT_BUILT_IN:
+		//	return HTTP_ERROR_OBSOLETE4;
 		case CURLE_COULDNT_RESOLVE_PROXY:
 			return HTTP_ERROR_COULDNT_RESOLVE_PROXY;
 		case CURLE_COULDNT_RESOLVE_HOST:
