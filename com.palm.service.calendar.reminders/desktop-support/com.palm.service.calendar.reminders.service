@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.palm.service.calendar.reminders
+Exec=/usr/lib/luna/run-js-service -n /usr/palm/services/com.palm.service.calendar.reminders

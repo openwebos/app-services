@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.palm.service.contacts
+Exec=/usr/lib/luna/run-js-service -n /usr/palm/services/com.palm.service.contacts
