@@ -54,9 +54,9 @@ pkg_check_modules(CJSON cjson)
 include_directories(${CJSON_INCLUDE_DIRS})
 webos_add_compiler_flags(ALL ${CJSON_CFLAGS})
 
-pkg_check_modules(MOJODB mojodb)
-include_directories(${MOJODB_INCLUDE_DIRS})
-webos_add_compiler_flags(ALL ${MOJODB_CFLAGS})
+#pkg_check_modules(MOJODB mojodb)
+#include_directories(${MOJODB_INCLUDE_DIRS})
+#webos_add_compiler_flags(ALL ${MOJODB_CFLAGS})
 
 pkg_check_modules(EMAILCOMMON email-common)
 include_directories(${EMAILCOMMON_INCLUDE_DIRS})
@@ -82,6 +82,27 @@ pkg_check_modules(CARES REQUIRED libcares)
 include_directories(${CARES_INCLUDE_DIRS})
 webos_add_compiler_flags(ALL ${CARES_CFLAGS})
 
+find_library(MJCORE NAMES mojocore libmojocore)
+if(MJCORE STREQUAL "MJCORE-NOTFOUND")
+        message(FATAL_ERROR "Failed to find libmojocore. Please install openwebos/db8")
+endif()
+
+find_library(MJLUNA NAMES mojoluna libmojoluna)
+if(MJLUNA STREQUAL "MJLUNA-NOTFOUND")
+        message(FATAL_ERROR "Failed to find libmojoluna. Please install openwebos/db8")
+endif()
+
+find_library(MJDB NAMES mojodb libmojodb)
+if(MJDB STREQUAL "MJDB-NOTFOUND")
+        message(FATAL_ERROR "Failed to find mojodb. Please install openwebos/db8")
+endif()
+
+find_path(MJ_INC NAMES mojodb/core/MojErr.h)
+if(MJ_INC STREQUAL "MJ_INC-NOTFOUND")
+        message(FATAL_ERROR "Failed to find mojodb header. Please install openwebos/db8")
+endif()
+include_directories(${MJ_INC}/mojodb)
+
 find_library(ICU NAMES icuuc)
 if(ICU STREQUAL "ICU-NOTFOUND")
    message(FATAL_ERROR "Failed to find ICU4C libaries. Please intall.")
@@ -100,7 +121,7 @@ list(REMOVE_ITEM protocol_files "src/protocol/SimpleResponseParser.cpp")
 
 add_executable(mojomail-imap src/ImapBusDispatcher.cpp src/ImapConfig.cpp src/ImapValidator.cpp src/ImapClient.cpp src/ImapServiceApp.cpp ${activity_files} ${client_files} ${commands_files} ${connection_files} ${data_files} ${exceptions_files} ${parser_files} ${sync_files} ${protocol_files}) 
 
-target_link_libraries(mojomail-imap ${GLIB2_LDFLAGS} ${MOJODB_LDFLAGS} ${ICU} ${EMAILCOMMON_LDFLAGS} ${PALMSOCKET_LDFLAGS} ${SANDBOX_LDFLAGS} ${PMLOG_LDFLAGS} ${CARES_LDFLAGS} ${PMSTATEMACHINE_LDFLAGS} ${Boost_LIBRARIES}) 
+target_link_libraries(mojomail-imap ${GLIB2_LDFLAGS} ${MJCORE} ${MJLUNA} ${MJDB} ${ICU} ${EMAILCOMMON_LDFLAGS} ${PALMSOCKET_LDFLAGS} ${SANDBOX_LDFLAGS} ${PMLOG_LDFLAGS} ${CARES_LDFLAGS} ${PMSTATEMACHINE_LDFLAGS} ${Boost_LIBRARIES}) 
 
 webos_build_program(NAME mojomail-imap)
 webos_build_system_bus_files()
