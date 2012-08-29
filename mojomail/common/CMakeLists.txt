@@ -46,9 +46,9 @@ pkg_check_modules(CJSON cjson)
 include_directories(${CJSON_INCLUDE_DIRS})
 webos_add_compiler_flags(ALL ${CJSON_CFLAGS})
 
-pkg_check_modules(MOJODB mojodb)
-include_directories(${MOJODB_INCLUDE_DIRS})
-webos_add_compiler_flags(ALL ${MOJODB_CFLAGS})
+#pkg_check_modules(MOJODB mojodb)
+#include_directories(${MOJODB_INCLUDE_DIRS})
+#webos_add_compiler_flags(ALL ${MOJODB_CFLAGS})
 
 pkg_check_modules(PALMSOCKET REQUIRED palmsocket)
 include_directories(${PALMSOCKET_INCLUDE_DIRS})
@@ -69,6 +69,27 @@ webos_add_compiler_flags(ALL ${LUNASERVICE_CFLAGS})
 pkg_check_modules(JEMALLOC_MT REQUIRED jemalloc_mt)
 include_directories(${JEMALLOC_MT_INCLUDE_DIRS})
 webos_add_compiler_flags(ALL ${JEMALLOC_MT_CFLAGS})
+
+find_library(MJCORE NAMES mojocore libmojocore)
+if(MJCORE STREQUAL "MJCORE-NOTFOUND")
+        message(FATAL_ERROR "Failed to find libmojocore. Please install openwebos/db8")
+endif()
+
+find_library(MJLUNA NAMES mojoluna libmojoluna)
+if(MJLUNA STREQUAL "MJLUNA-NOTFOUND")
+        message(FATAL_ERROR "Failed to find libmojoluna. Please install openwebos/db8")
+endif()
+
+find_library(MJDB NAMES mojodb libmojodb)
+if(MJDB STREQUAL "MJDB-NOTFOUND")
+        message(FATAL_ERROR "Failed to find mojodb. Please install openwebos/db8")
+endif()
+
+find_path(MJ_INC NAMES mojodb/core/MojErr.h)
+if(MJ_INC STREQUAL "MJ_INC-NOTFOUND")
+        message(FATAL_ERROR "Failed to find mojodb header. Please install openwebos/db8")
+endif()
+include_directories(${MJ_INC}/mojodb)
 
 find_library(ICU NAMES icuuc)
 if(ICU STREQUAL "ICU-NOTFOUND")
@@ -102,9 +123,9 @@ aux_source_directory(src/util util_files)
 
 add_library(email-common SHARED src/CommonErrors.cpp ${activity_files} ${client_files} ${data_files} ${exceptions_files} ${mimeparser_files} ${stream_files} ${async_files} ${email_files} ${glibcurl_files} ${network_files} ${util_files})
 
-target_link_libraries(email-common ${GLIB2_LDFLAGS} ${CJSON_LDFLAGS} ${MOJODB_LDFLAGS} ${PALMSOCKET_LDFLAGS} ${SANDBOX_LDFLAGS} ${PMLOG_LDFLAGS} ${LUNASERVICE_LDFLAGS} ${JEMALLOC_MT_LDFLAGS} ${ICU} ${ICUI18N} ${LIBZ} ${Boost_LIBRARIES} pthread curl)
+target_link_libraries(email-common ${GLIB2_LDFLAGS} ${CJSON_LDFLAGS} ${MJCORE} ${MJLUNA} ${MJDB} ${PALMSOCKET_LDFLAGS} ${SANDBOX_LDFLAGS} ${PMLOG_LDFLAGS} ${LUNASERVICE_LDFLAGS} ${JEMALLOC_MT_LDFLAGS} ${ICU} ${ICUI18N} ${LIBZ} ${Boost_LIBRARIES} pthread curl)
 
 webos_build_pkgconfig()
 webos_build_library(NAME email-common)
-install(FILES files/etc/palm/filecache_types/attachment DESTINATION /etc/palm/filecache_types)
-install(FILES files/etc/palm/filecache_types/email DESTINATION /etc/palm/filecache_types)
+#install(FILES files/etc/palm/filecache_types/attachment DESTINATION /etc/palm/filecache_types)
+#install(FILES files/etc/palm/filecache_types/email DESTINATION /etc/palm/filecache_types)
