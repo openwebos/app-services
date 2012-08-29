@@ -1,0 +1,14 @@
+{
+    "role": {
+        "exeName":"/usr/lib/luna/mojomail-pop",
+        "type": "regular",
+        "allowedNames": ["com.palm.pop"]
+    },
+    "permissions": [
+        {
+            "service":"com.palm.pop",
+            "inbound":["*"],
+            "outbound":["*"]
+        }
+    ]
+}
