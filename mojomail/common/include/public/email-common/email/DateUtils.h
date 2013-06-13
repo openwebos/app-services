@@ -1,6 +1,6 @@
 // @@@LICENSE
 //
-//      Copyright (c) 2010-2012 Hewlett-Packard Development Company, L.P.
+//      Copyright (c) 2010-2013 LG Electronics, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,8 +18,6 @@
 
 /**
  * @file	DateUtils.h
- *
- * Copyright 2011 Palm, Inc.  All rights reserved.
  */
 #ifndef DATEUTILS_H_
 #define DATEUTILS_H_
