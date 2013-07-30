@@ -61,7 +61,7 @@
 			"capability": "LOCAL.FILESTORAGE",
 			"id": "com.palm.palmprofile.localfilestore",
 			"icon": {
-				"loc_32x32": "images/touchpad-32x32.png",
+				"loc_32x32": "images/touchpad-32x32.png"
 			}
 		}
 	]

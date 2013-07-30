@@ -17,7 +17,7 @@
 				{
 					"name": "listAccountsPublic",
 					"assistant": "ListAccountsPublicCommandAssistant",
-					"public": true,
+					"public": true
 				},
 				{
 					"name": "getAccountInfo",
@@ -75,7 +75,7 @@
 				
 				{
 					"name": "setPrefs",
-					"assistant": "setPrefsCommandAssistant",
+					"assistant": "setPrefsCommandAssistant"
 				},
 				{
 					"name": "notifyAccountCreated",
@@ -97,9 +97,10 @@
 					"assistant": "CreateLocalAccountAssistant",
 					"public": true,
 					"commandTimeout": 20
-				},
+				}
 			]
 		}
 	],
 	"engine": "node"
 }
+
